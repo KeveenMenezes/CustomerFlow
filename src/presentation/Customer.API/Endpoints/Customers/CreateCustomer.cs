@@ -1,3 +1,7 @@
+using Customer.Application.Features.Customer.Commands.CreateCustomer;
+using Mapster;
+using MassTransit;
+using MassTransit.Mediator;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Customer.API.Endpoints.Customers;
@@ -26,10 +30,15 @@ public static class CreateCustomerEndpoint
     }
 
     public static async Task<Results<Ok<CreateCustomerResponse>, ProblemHttpResult>> CreateCustomer(
-        CreateCustomerRequest request)
+        CreateCustomerRequest request,
+        IMediator mediator)
     {
-        var customerId = 1;
-        await Task.Delay(100); // Simulate async operation
-        return TypedResults.Ok(new CreateCustomerResponse(customerId));
+        var command = request.Adapt<CreateCustomerCommand>();
+
+        var result = await mediator.SendRequest(command);
+
+        var response = result.Adapt<CreateCustomerResponse>();
+
+        return TypedResults.Ok(response);
     }
 }

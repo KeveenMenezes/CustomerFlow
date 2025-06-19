@@ -4,6 +4,7 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="Mapster" Version="7.4.0" />
     <PackageVersion Include="MassTransit.Abstractions" Version="8.4.1" />
     <PackageVersion Include="MassTransit.Kafka" Version="8.4.1" />
     <PackageVersion Include="FluentValidation" Version="11.11.0" />

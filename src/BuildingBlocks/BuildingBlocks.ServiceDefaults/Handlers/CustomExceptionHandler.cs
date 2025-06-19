@@ -10,7 +10,7 @@ public class CustomExceptionHandler
             "Error Message: {ExceptionMessage}, Time of occurrence {Time}",
             exception.Message, DateTime.UtcNow);
 
-        (var Detail, var Title, var StatusCode) = exception switch
+        (var Detail, var ErrorCode, var StatusCode) = exception switch
         {
             NotFoundException =>
             (
@@ -50,24 +50,21 @@ public class CustomExceptionHandler
             )
         };
 
-        var problemDetails = new ProblemDetails
+        var errors = new List<ErrorDto>
         {
-            Title = Title,
-            Detail = Detail,
-            Status = StatusCode,
-            Instance = httpContext.Request.Path
+            new(null, Detail, ErrorCode)
         };
 
-        problemDetails.Extensions.Add("traceId", httpContext.TraceIdentifier);
-
-        if (exception is ValidationException validationException)
+        if (exception is ValidationException validationException && validationException.Errors is not null)
         {
-            problemDetails.Extensions.Add("ValidationErrors", validationException.Errors);
+            errors = [.. validationException.Errors.Select(e =>
+                new ErrorDto(e.PropertyName, e.ErrorMessage, ErrorCode))];
         }
 
-        httpContext.Response.StatusCode = StatusCode;
+        var dataResult = new DataResult(false, errors);
 
-        await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
+        httpContext.Response.StatusCode = StatusCode;
+        await httpContext.Response.WriteAsJsonAsync(dataResult, cancellationToken);
         return true;
     }
 }

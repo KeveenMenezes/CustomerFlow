@@ -1,5 +1,7 @@
+global using System.Diagnostics;
 global using BuildingBlocks.Core.CQRS;
 global using BuildingBlocks.Core.Exceptions;
+global using BuildingBlocks.ServiceDefaults.Filters;
 global using MassTransit;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Diagnostics;
@@ -14,4 +16,3 @@ global using Microsoft.Extensions.Logging;
 global using OpenTelemetry.Logs;
 global using OpenTelemetry.Metrics;
 global using OpenTelemetry.Trace;
-global using System.Diagnostics;

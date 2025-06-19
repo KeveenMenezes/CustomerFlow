@@ -38,4 +38,8 @@
     <Using Include="OpenTelemetry.Instrumentation.Runtime" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Filters/" />
+  </ItemGroup>
+
 </Project>

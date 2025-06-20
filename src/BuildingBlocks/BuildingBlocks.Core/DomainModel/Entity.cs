@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.Core.DomainModel;
+﻿namespace CustomerFlow.BuildingBlocks.Core.DomainModel;
 
 public abstract class Entity<T>
     : IEntity<T>

@@ -1,4 +1,4 @@
-using Customer.Application.Features.Customer.Commands.CreateCustomer;
+using CustomerFlow.Core.Application.Features.Customer.Commands.CreateCustomer;
 using Mapster;
 using MassTransit;
 using MassTransit.Mediator;

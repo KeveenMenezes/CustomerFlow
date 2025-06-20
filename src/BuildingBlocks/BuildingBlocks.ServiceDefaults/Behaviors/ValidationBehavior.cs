@@ -1,4 +1,6 @@
-﻿namespace BuildingBlocks.ServiceDefaults.Behaviors;
+﻿using CustomerFlow.BuildingBlocks.Core.CQRS;
+
+namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Behaviors;
 
 public class ValidationBehavior<TRequest, TResponse>
     (IEnumerable<IValidator<TRequest>> validators)

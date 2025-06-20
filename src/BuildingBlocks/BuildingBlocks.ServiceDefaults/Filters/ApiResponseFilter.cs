@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace BuildingBlocks.ServiceDefaults.Filters;
+namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Filters;
 
 public class ApiResponseFilter
     : IActionFilter

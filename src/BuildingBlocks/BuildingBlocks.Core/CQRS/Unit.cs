@@ -1,4 +1,4 @@
-namespace BuildingBlocks.Core.CQRS;
+namespace CustomerFlow.BuildingBlocks.Core.CQRS;
 
 public sealed class Unit
 {

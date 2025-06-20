@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.ServiceDefaults;
+﻿namespace CustomerFlow.BuildingBlocks.ServiceDefaults;
 
 public static partial class Extensions
 {

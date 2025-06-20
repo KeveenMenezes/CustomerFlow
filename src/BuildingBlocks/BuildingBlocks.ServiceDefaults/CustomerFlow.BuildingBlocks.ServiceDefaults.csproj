@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuildingBlocks.Core\BuildingBlocks.Core.csproj" />
+    <ProjectReference Include="../BuildingBlocks.Core/CustomerFlow.BuildingBlocks.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

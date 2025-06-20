@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.Core.CQRS;
+﻿namespace CustomerFlow.BuildingBlocks.Core.CQRS;
 
 public interface IQueryHandler<in TQuery, TResponse>
     : IConsumer<TQuery>

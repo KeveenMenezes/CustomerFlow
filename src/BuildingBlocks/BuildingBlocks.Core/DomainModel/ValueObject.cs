@@ -1,4 +1,4 @@
-namespace BuildingBlocks.Core.DomainModel;
+namespace CustomerFlow.BuildingBlocks.Core.DomainModel;
 
 public class ValueObject<T>
     : IEquatable<ValueObject<T>>
@@ -22,7 +22,7 @@ public class ValueObject<T>
     {
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if (obj.GetType() != GetType()) return false;
         return Equals((ValueObject<T>)obj);
     }
 

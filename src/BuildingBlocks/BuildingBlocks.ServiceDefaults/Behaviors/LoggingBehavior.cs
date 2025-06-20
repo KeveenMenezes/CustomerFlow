@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.ServiceDefaults.Behaviors;
+﻿namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Behaviors;
 
 public class LoggingBehavior<TRequest, TResponse>
     (ILogger<LoggingBehavior<TRequest, TResponse>> logger)

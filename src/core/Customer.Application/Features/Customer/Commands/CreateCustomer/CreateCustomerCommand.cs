@@ -1,6 +1,6 @@
-using BuildingBlocks.Core.CQRS;
+using CustomerFlow.BuildingBlocks.Core.CQRS;
 
-namespace Customer.Application.Features.Customer.Commands.CreateCustomer;
+namespace CustomerFlow.Core.Application.Features.Customer.Commands.CreateCustomer;
 
 public record CreateCustomerCommand(
     string Email,

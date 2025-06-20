@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.Core.DomainModel;
+﻿namespace CustomerFlow.BuildingBlocks.Core.DomainModel;
 
 public interface IEntity<T>
     : IEntity

@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.Messaging.IntegrationEvents;
+﻿namespace CustomerFlow.BuildingBlocks.Messaging.IntegrationEvents;
 
 public record IntegrationEvent
 {

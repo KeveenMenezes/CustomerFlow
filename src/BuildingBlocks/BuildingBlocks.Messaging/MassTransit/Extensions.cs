@@ -3,7 +3,7 @@ using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BuildingBlocks.Messaging.MassTransit;
+namespace CustomerFlow.BuildingBlocks.Messaging.MassTransit;
 public static class Extentions
 {
     public static IServiceCollection AddMessageBroker(

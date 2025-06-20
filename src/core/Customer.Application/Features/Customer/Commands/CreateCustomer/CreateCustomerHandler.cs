@@ -1,6 +1,4 @@
-using MassTransit.Mediator;
-
-namespace Customer.Application.Features.Customer.Commands.CreateCustomer;
+namespace CustomerFlow.Core.Application.Features.Customer.Commands.CreateCustomer;
 
 public class CreateCustomerHandler
     : MediatorRequestHandler<CreateCustomerCommand, CreateCustomerResult>

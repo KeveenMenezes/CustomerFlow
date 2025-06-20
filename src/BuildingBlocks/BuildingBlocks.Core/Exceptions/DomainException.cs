@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.Core.Exceptions;
+﻿namespace CustomerFlow.BuildingBlocks.Core.Exceptions;
 
 public class DomainException(
     string name, object value, string? message = null)

@@ -1,4 +1,7 @@
-﻿namespace BuildingBlocks.ServiceDefaults.Handlers;
+﻿using CustomerFlow.BuildingBlocks.Core.Exceptions;
+using CustomerFlow.BuildingBlocks.ServiceDefaults.Filters;
+
+namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Handlers;
 
 public class CustomExceptionHandler
     (ILogger<CustomExceptionHandler> logger)

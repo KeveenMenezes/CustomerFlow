@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.Core.CQRS;
+﻿namespace CustomerFlow.BuildingBlocks.Core.CQRS;
 
 public interface IQuery<out TResponse>
     : Request<TResponse>

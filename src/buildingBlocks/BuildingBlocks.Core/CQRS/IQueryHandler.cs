@@ -1,8 +1,8 @@
 ﻿namespace CustomerFlow.BuildingBlocks.Core.CQRS;
 
 public interface IQueryHandler<in TQuery, TResponse>
-    : IConsumer<TQuery>
-    where TQuery : class, IQuery<TResponse>
-    where TResponse : class
+    : IRequestHandler<TQuery, TResponse>
+    where TQuery : IQuery<TResponse>
+    where TResponse : notnull
 {
 }

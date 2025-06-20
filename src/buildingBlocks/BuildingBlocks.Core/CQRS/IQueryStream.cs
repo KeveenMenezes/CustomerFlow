@@ -1,6 +1,6 @@
 ﻿namespace CustomerFlow.BuildingBlocks.Core.CQRS;
 
-public interface IQuery<out TResponse> : IRequest<TResponse>
+public interface IQueryStream<out TResponse> : IStreamRequest<TResponse>
     where TResponse : notnull
 {
 }

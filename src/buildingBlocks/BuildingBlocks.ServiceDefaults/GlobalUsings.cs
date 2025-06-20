@@ -2,7 +2,6 @@ global using System.Diagnostics;
 global using CustomerFlow.BuildingBlocks.Core.CQRS;
 global using CustomerFlow.BuildingBlocks.Core.Exceptions;
 global using CustomerFlow.BuildingBlocks.ServiceDefaults.Filters;
-global using MassTransit;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;

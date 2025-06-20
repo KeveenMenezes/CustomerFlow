@@ -2,13 +2,13 @@
 
 public interface ICommandHandler<in TCommand>
     : ICommandHandler<TCommand, Unit>
-    where TCommand : class, ICommand<Unit>
+    where TCommand : ICommand<Unit>
 {
 }
 
 public interface ICommandHandler<in TCommand, TResponse>
-    : IConsumer<TCommand>
-    where TCommand : class, ICommand<TResponse>
-    where TResponse : class
+    : IRequestHandler<TCommand, TResponse>
+    where TCommand : ICommand<TResponse>
+    where TResponse : notnull
 {
 }

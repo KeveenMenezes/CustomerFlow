@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.BuildingBlocks.Core", "src\BuildingBlocks\BuildingBlocks.Core\CustomerFlow.BuildingBlocks.Core.csproj", "{DEEB0002-DC40-48BD-B0E1-E013273733DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.BuildingBlocks.Core", "src\buildingBlocks\BuildingBlocks.Core\CustomerFlow.BuildingBlocks.Core.csproj", "{DEEB0002-DC40-48BD-B0E1-E013273733DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{F6F462E1-D058-33EE-9A35-BBD49B846676}"
 	ProjectSection(SolutionItems) = preProject
@@ -20,9 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{90298CBA-BD6F-3A0A-69D5-97CAD7B05E7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.BuildingBlocks.Messaging", "src\BuildingBlocks\BuildingBlocks.Messaging\CustomerFlow.BuildingBlocks.Messaging.csproj", "{613BB215-AC4B-427D-9964-9FA4BB9F9611}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.BuildingBlocks.Messaging", "src\buildingBlocks\BuildingBlocks.Messaging\CustomerFlow.BuildingBlocks.Messaging.csproj", "{613BB215-AC4B-427D-9964-9FA4BB9F9611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.BuildingBlocks.ServiceDefaults", "src\BuildingBlocks\BuildingBlocks.ServiceDefaults\CustomerFlow.BuildingBlocks.ServiceDefaults.csproj", "{B79373A3-F66C-4B58-BDF1-DF6644DCB4CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.BuildingBlocks.ServiceDefaults", "src\buildingBlocks\BuildingBlocks.ServiceDefaults\CustomerFlow.BuildingBlocks.ServiceDefaults.csproj", "{B79373A3-F66C-4B58-BDF1-DF6644DCB4CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{6996BBF7-DB31-59BC-C7DD-9A7CCC6138C4}"
 EndProject

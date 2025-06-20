@@ -1,10 +1,4 @@
-using CustomerFlow.Core.Application.Features.Customer.Commands.CreateCustomer;
-using Mapster;
-using MassTransit;
-using MassTransit.Mediator;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace Customer.API.Endpoints.Customers;
+namespace CustomerFlow.API.Endpoints.Customers;
 
 public record CreateCustomerRequest(
     string Email,

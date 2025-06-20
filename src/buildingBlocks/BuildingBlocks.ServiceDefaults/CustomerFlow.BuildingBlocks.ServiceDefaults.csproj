@@ -26,6 +26,7 @@
     <ProjectReference Include="../BuildingBlocks.Core/CustomerFlow.BuildingBlocks.Core.csproj" />
   </ItemGroup>
 
+
   <ItemGroup>
     <Using Include="FluentValidation" />
     <Using Include="FluentValidation.AspNetCore" />

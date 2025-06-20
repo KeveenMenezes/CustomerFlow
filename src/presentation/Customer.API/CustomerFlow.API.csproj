@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../BuildingBlocks/BuildingBlocks.ServiceDefaults/CustomerFlow.BuildingBlocks.ServiceDefaults.csproj" />
+    <ProjectReference Include="../../buildingBlocks/BuildingBlocks.ServiceDefaults/CustomerFlow.BuildingBlocks.ServiceDefaults.csproj" />
     <ProjectReference Include="../../core/Customer.Application/CustomerFlow.Core.Application.csproj" />
+    <ProjectReference Include="../../core/Customer.Domain/CustomerFlow.Core.Domain.csproj" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,3 @@
-using CustomerFlow.BuildingBlocks.Core.CQRS;
-
 namespace CustomerFlow.Core.Application.Features.Customer.Commands.CreateCustomer;
 
 public record CreateCustomerCommand(

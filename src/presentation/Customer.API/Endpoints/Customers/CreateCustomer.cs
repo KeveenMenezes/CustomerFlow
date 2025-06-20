@@ -25,11 +25,11 @@ public static class CreateCustomerEndpoint
 
     public static async Task<Results<Ok<CreateCustomerResponse>, ProblemHttpResult>> CreateCustomer(
         CreateCustomerRequest request,
-        IMediator mediator)
+        ISender sender)
     {
         var command = request.Adapt<CreateCustomerCommand>();
 
-        var result = await mediator.SendRequest(command);
+        var result = await sender.Send(command);
 
         var response = result.Adapt<CreateCustomerResponse>();
 

@@ -1,13 +1,15 @@
 global using System.Diagnostics;
-global using CustomerFlow.BuildingBlocks.Core.CQRS;
+global using System.Text.Json.Serialization;
 global using CustomerFlow.BuildingBlocks.Core.Exceptions;
 global using CustomerFlow.BuildingBlocks.ServiceDefaults.Filters;
+global using Mediator;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Hosting;

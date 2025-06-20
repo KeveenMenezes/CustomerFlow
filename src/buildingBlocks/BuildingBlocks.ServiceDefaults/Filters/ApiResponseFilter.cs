@@ -1,6 +1,3 @@
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Mvc.Filters;
-
 namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Filters;
 
 public class ApiResponseFilter
@@ -8,6 +5,7 @@ public class ApiResponseFilter
 {
     public void OnActionExecuting(ActionExecutingContext context)
     {
+        // Method intentionally left empty.
     }
 
     public void OnActionExecuted(ActionExecutedContext context)

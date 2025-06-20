@@ -1,11 +1,12 @@
 namespace CustomerFlow.Core.Application.Features.Customer.Commands.CreateCustomer;
 
 public class CreateCustomerHandler
-    : MediatorRequestHandler<CreateCustomerCommand, CreateCustomerResult>
+    : ICommandHandler<CreateCustomerCommand, CreateCustomerResult>
 {
-    protected override Task<CreateCustomerResult> Handle(
-        CreateCustomerCommand request, CancellationToken cancellationToken)
+    public async ValueTask<CreateCustomerResult> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
-        return Task.FromResult(new CreateCustomerResult(1));
+        // Simulação de operação assíncrona
+        await Task.Yield();
+        return new CreateCustomerResult(1);
     }
 }

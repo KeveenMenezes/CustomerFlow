@@ -2,29 +2,25 @@
 
 public class LoggingBehavior<TRequest, TResponse>
     (ILogger<LoggingBehavior<TRequest, TResponse>> logger)
-    : IFilter<SendContext<TRequest>>
-    where TRequest : class
+    : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : notnull, IRequest<TResponse>
     where TResponse : notnull
 {
-    public void Probe(ProbeContext context)
+    public async ValueTask<TResponse> Handle(
+        TRequest message,
+        CancellationToken cancellationToken,
+        MessageHandlerDelegate<TRequest, TResponse> next)
     {
-        throw new NotImplementedException();
-    }
-
-    public async Task Send(SendContext<TRequest> context, IPipe<SendContext<TRequest>> next)
-    {
-        var request = context.Message;
-
         logger.LogInformation(
             @"[START] Handle request= {Request}
             Response= {Response}
             ResquestData= {RequestData}",
-            typeof(TRequest).Name, typeof(TResponse).Name, request);
+            typeof(TRequest).Name, typeof(TResponse).Name, message);
 
         var timer = new Stopwatch();
 
         timer.Start();
-        await next.Send(context);
+        var response = await next(message, cancellationToken);
         timer.Stop();
 
         var timeTaken = timer.Elapsed;
@@ -38,6 +34,8 @@ public class LoggingBehavior<TRequest, TResponse>
             @"[END] Handle request={Request}
             Response={Response}
             ResquestData={RequestData}",
-            typeof(TRequest).Name, typeof(TResponse).Name, request);
+            typeof(TRequest).Name, typeof(TResponse).Name, message);
+
+        return response;
     }
 }

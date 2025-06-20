@@ -1,23 +1,20 @@
-﻿using CustomerFlow.BuildingBlocks.Core.CQRS;
-
-namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Behaviors;
+﻿namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Behaviors;
 
 public class ValidationBehavior<TRequest, TResponse>
     (IEnumerable<IValidator<TRequest>> validators)
-    : IFilter<SendContext<TRequest>>
-    where TRequest : class, ICommand<TResponse>
-    where TResponse : class
+    : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : notnull, IRequest<TResponse>
+    where TResponse : notnull
 {
-    public void Probe(ProbeContext context)
+    public async ValueTask<TResponse> Handle(
+        TRequest message,
+        CancellationToken cancellationToken,
+        MessageHandlerDelegate<TRequest, TResponse> next)
     {
-    }
-
-    public async Task Send(SendContext<TRequest> context, IPipe<SendContext<TRequest>> next)
-    {
-        var validation = new ValidationContext<TRequest>(context.Message);
+        var context = new ValidationContext<TRequest>(message);
 
         var validationResults = await Task.WhenAll(
-            validators.Select(v => v.ValidateAsync(validation)));
+            validators.Select(v => v.ValidateAsync(context, cancellationToken)));
 
         var failures = validationResults
             .SelectMany(result => result.Errors)
@@ -29,6 +26,6 @@ public class ValidationBehavior<TRequest, TResponse>
             throw new ValidationException(failures);
         }
 
-        await next.Send(context);
+        return await next(message, cancellationToken);
     }
 }

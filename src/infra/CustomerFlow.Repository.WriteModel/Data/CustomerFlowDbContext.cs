@@ -10,4 +10,3 @@ public class CustomerFlowDbContext(DbContextOptions<CustomerFlowDbContext> optio
         base.OnModelCreating(modelBuilder);
     }
 }
-

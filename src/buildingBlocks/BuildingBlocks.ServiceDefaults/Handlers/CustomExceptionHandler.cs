@@ -1,13 +1,11 @@
-﻿using CustomerFlow.BuildingBlocks.Core.Exceptions;
-using CustomerFlow.BuildingBlocks.ServiceDefaults.Filters;
-
-namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Handlers;
+﻿namespace CustomerFlow.BuildingBlocks.ServiceDefaults.Handlers;
 
 public class CustomExceptionHandler
     (ILogger<CustomExceptionHandler> logger)
     : IExceptionHandler
 {
-    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+    public async ValueTask<bool> TryHandleAsync(
+        HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {
         logger.LogError(
             "Error Message: {ExceptionMessage}, Time of occurrence {Time}",

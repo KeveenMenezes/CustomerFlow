@@ -10,5 +10,10 @@
     <ProjectReference Include="../../buildingBlocks/BuildingBlocks.Core/CustomerFlow.BuildingBlocks.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AggregatesModel/CustomerAggregate/DomainEvents/" />
+    <Folder Include="AggregatesModel/CustomerAggregate/ValueObjects/" />
+  </ItemGroup>
+
 
 </Project>

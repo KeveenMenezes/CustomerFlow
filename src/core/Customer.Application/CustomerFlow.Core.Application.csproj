@@ -11,4 +11,8 @@
     <ProjectReference Include="../Customer.Domain/CustomerFlow.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features/Customer/Queries/" />
+  </ItemGroup>
+
 </Project>

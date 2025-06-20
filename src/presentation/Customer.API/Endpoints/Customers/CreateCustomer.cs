@@ -1,4 +1,4 @@
-namespace CustomerFlow.API.Endpoints.Customers;
+namespace CustomerFlow.Presentation.API.Endpoints.Customers;
 
 public record CreateCustomerRequest(
     string Email,

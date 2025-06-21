@@ -4,6 +4,8 @@ public interface IEntity<T>
     : IEntity
 {
     public T Id { get; set; }
+    public IEntity<T> Create();
+    public void Update();
 }
 
 public interface IEntity

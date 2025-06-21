@@ -36,9 +36,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.BuildingBlocks
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.BuildingBlocks.Core", "src\buildingBlocks\BuildingBlocks.Core\CustomerFlow.BuildingBlocks.Core.csproj", "{31C84AF1-BF4F-425A-9BBF-14F39C383DB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.Infra.ReadModel", "src\infra\CustomerFlow.Repository.ReadModel\CustomerFlow.Infra.ReadModel.csproj", "{EE1A3F43-E194-453C-829D-FD4C41FB8A59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.Infra.QueryRepository", "src\infra\CustomerFlow.Repository.ReadModel\CustomerFlow.Infra.QueryRepository.csproj", "{EE1A3F43-E194-453C-829D-FD4C41FB8A59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.Infra.WriteModel", "src\infra\CustomerFlow.Repository.WriteModel\CustomerFlow.Infra.WriteModel.csproj", "{6409A1BA-61B7-48A9-9EAB-889CA8D2E6EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFlow.Infra.CommandRepository", "src\infra\CustomerFlow.Repository.WriteModel\CustomerFlow.Infra.CommandRepository.csproj", "{6409A1BA-61B7-48A9-9EAB-889CA8D2E6EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

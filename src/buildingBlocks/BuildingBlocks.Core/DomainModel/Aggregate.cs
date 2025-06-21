@@ -3,6 +3,7 @@
 public abstract class Aggregate<TId>
     : Entity<TId>, IAggregate<TId>
 {
+    protected Aggregate() { }
     private readonly List<IDomainEvent> _domainEvents = [];
     public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 

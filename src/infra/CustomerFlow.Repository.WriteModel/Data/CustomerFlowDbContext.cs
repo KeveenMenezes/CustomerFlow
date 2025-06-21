@@ -1,4 +1,4 @@
-namespace CustomerFlow.Infra.WriteModel.Data;
+namespace CustomerFlow.Infra.CommandRepository.Data;
 
 public class CustomerFlowDbContext(DbContextOptions<CustomerFlowDbContext> options)
     : DbContext(options)

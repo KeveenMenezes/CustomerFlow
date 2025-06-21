@@ -1,15 +1,16 @@
-namespace CustomerFlow.Core.Application.Features.Customer.Commands.CreateCustomer;
+namespace CustomerFlow.Core.Application.Features.Customers.Commands.CreateCustomer;
 
 public record CreateCustomerCommand(
+    string FirstName,
+    string LastName,
     string Email,
     string Password,
+    string PhoneNumber,
+    string Address,
+    string City,
     string State,
-    int PartnerId,
-    bool UsePartner,
-    string UtmSource,
-    string? CustomerToken,
-    string? ReferralCode,
-    string? BrowserFingerprint
+    string ZipCode,
+    string Country
 ) : ICommand<CreateCustomerResult>;
 
 public record CreateCustomerResult(
@@ -32,8 +33,5 @@ public class CreateCustomerCommandValidator
         RuleFor(x => x.State)
             .NotEmpty().WithMessage("State is required.")
             .Length(2).WithMessage("State must be exactly 2 characters long.");
-
-        RuleFor(x => x.BrowserFingerprint)
-            .NotEmpty().WithMessage("Browser fingerprint is required.");
     }
 }

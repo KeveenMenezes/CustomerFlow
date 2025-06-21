@@ -1,15 +1,18 @@
+using CustomerFlow.Core.Application.Features.Customers.Commands.CreateCustomer;
+
 namespace CustomerFlow.Presentation.API.Endpoints.Customers;
 
 public record CreateCustomerRequest(
+    string FirstName,
+    string LastName,
     string Email,
     string Password,
+    string PhoneNumber,
+    string Address,
+    string City,
     string State,
-    int PartnerId,
-    bool UsePartner,
-    string UtmSource,
-    string? CustomerToken,
-    string? ReferralCode,
-    string? BrowserFingerprint
+    string ZipCode,
+    string Country
 );
 
 public record CreateCustomerResponse(

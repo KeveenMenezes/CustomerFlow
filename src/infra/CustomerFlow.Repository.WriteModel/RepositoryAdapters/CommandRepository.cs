@@ -1,7 +1,7 @@
-namespace CustomerFlow.Infra.WriteModel.RepositoryAdapters;
+namespace CustomerFlow.Infra.CommandRepository.RepositoryAdapters;
 
-public class Repository<T>(CustomerFlowDbContext db)
-    : IRepository<T> where T : class, IAggregate
+public class CommandRepository<T>(CustomerFlowDbContext db)
+    : ICommandRepository<T> where T : class, IAggregate
 {
     private readonly CustomerFlowDbContext _db = db;
     private DbSet<T> Entity => _db.Set<T>();

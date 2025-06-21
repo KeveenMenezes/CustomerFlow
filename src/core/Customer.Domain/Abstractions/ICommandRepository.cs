@@ -1,8 +1,6 @@
-using CustomerFlow.BuildingBlocks.Core.DomainModel;
-
 namespace CustomerFlow.Core.Domain.Abstractions;
 
-public interface IRepository<T> where T : IAggregate
+public interface ICommandRepository<T> where T : IAggregate
 {
     public Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     public Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default);

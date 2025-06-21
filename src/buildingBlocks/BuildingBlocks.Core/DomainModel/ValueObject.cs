@@ -1,15 +1,10 @@
 namespace CustomerFlow.BuildingBlocks.Core.DomainModel;
 
-public class ValueObject<T>
+public class ValueObject<T>(T value)
     : IEquatable<ValueObject<T>>
     where T : IComparable<T>
 {
-    public T Value { get; }
-
-    public ValueObject(T value)
-    {
-        Value = value;
-    }
+    public T Value { get; } = value;
 
     public bool Equals(ValueObject<T>? other)
     {

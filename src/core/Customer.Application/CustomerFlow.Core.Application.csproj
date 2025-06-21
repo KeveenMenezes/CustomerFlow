@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../../buildingBlocks/BuildingBlocks.Messaging/CustomerFlow.BuildingBlocks.Messaging.csproj" />
     <ProjectReference Include="../../buildingBlocks/BuildingBlocks.ServiceDefaults/CustomerFlow.BuildingBlocks.ServiceDefaults.csproj" />
     <ProjectReference Include="../Customer.Domain/CustomerFlow.Core.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features/Customer/Queries/" />
+    <Folder Include="Features/Customers/EventHandlers/Integration/" />
+    <Folder Include="Features/Customers/Queries/" />
   </ItemGroup>
 
 </Project>

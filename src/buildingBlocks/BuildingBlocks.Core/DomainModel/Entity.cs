@@ -8,4 +8,17 @@ public abstract class Entity<T>
     public string? CreatedBy { get; set; }
     public DateTime? LastModified { get; set; }
     public string? LastModifiedBy { get; set; }
+
+    protected Entity() { }
+
+    public virtual IEntity<T> Create()
+    {
+        CreatedAt = DateTime.UtcNow;
+        return this;
+    }
+
+    public void Update()
+    {
+        LastModified = DateTime.UtcNow;
+    }
 }

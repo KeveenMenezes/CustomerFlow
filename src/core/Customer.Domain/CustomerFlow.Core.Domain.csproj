@@ -11,8 +11,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AggregatesModel/CustomerAggregate/DomainEvents/" />
-    <Folder Include="AggregatesModel/CustomerAggregate/ValueObjects/" />
+    <Folder Include="AggregatesModel/CustomerLeadAggregate/Abstractions/" />
+    <Folder Include="AggregatesModel/CustomerLeadAggregate/Enums/" />
+    <Folder Include="AggregatesModel/CustomerLeadAggregate/Events/" />
+    <Folder Include="AggregatesModel/CustomerLeadAggregate/ValueObjects/" />
+    <Folder Include="AggregatesModel/SpamDomainAggregate/" />
+    <Folder Include="AggregatesModel/SpamDomainAggregate/Abstractions/" />
+    <Folder Include="AggregatesModel/SpamDomainAggregate/Enums/" />
+    <Folder Include="AggregatesModel/SpamDomainAggregate/Events/" />
+    <Folder Include="AggregatesModel/SpamDomainAggregate/Models/" />
+    <Folder Include="AggregatesModel/SpamDomainAggregate/ValueObjects/" />
+    <Folder Include="Enums/" />
   </ItemGroup>
 
 

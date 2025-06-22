@@ -1,10 +1,11 @@
+using CustomerFlow.BuildingBlocks.Messaging.EventBusConfiguration;
 using Mediator;
 
 namespace CustomerFlow.Core.Application.Features.Customers.EventHandlers.Domain;
 
 public class CustomerActivedEventHandler(
-    IPublisher publisher,
     ICustomerIntegrationAdapter customerIntegrationAdapter,
+    IEventBusPublisher publisher,
     ILogger<CustomerActivedEventHandler> logger)
     : INotificationHandler<CustomerActivedEvent>
 {
@@ -22,7 +23,7 @@ public class CustomerActivedEventHandler(
             { "states_bmg", StatesMessage }
         };
 
-        await publisher.Publish(
+        await publisher.PublishAsync(
             new SendVerificationTokenTwilio(
                 dataReplace,
                 SendTypeCommunication.Sms.ToValue(),

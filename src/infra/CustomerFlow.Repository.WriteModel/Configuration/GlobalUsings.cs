@@ -5,5 +5,11 @@ global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Abstract
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerLeadAggregate.Models;
 global using CustomerFlow.Infra.CommandRepository.Data;
+global using CustomerFlow.Infra.CommandRepository.Interceptors;
+global using CustomerFlow.Infra.CommandRepository.RepositoryAdapters;
+global using Mediator;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Diagnostics;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;

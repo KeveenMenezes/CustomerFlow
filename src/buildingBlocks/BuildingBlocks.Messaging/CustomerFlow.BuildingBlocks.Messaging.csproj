@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="DotNetCore.CAP" />
+    <PackageReference Include="DotNetCore.CAP.Dashboard" />
+    <PackageReference Include="DotNetCore.CAP.Kafka" />
+    <PackageReference Include="DotNetCore.CAP.MySql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../infra/CustomerFlow.Repository.WriteModel/CustomerFlow.Infra.CommandRepository.csproj" />
+  </ItemGroup>
+
 </Project>

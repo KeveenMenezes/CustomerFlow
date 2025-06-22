@@ -7,11 +7,6 @@ public class CustomerConfiguration
     {
         builder.HasKey(c => c.Id);
 
-        builder.Property(c => c.FirstName)
-            .IsRequired()
-            .HasMaxLength(50);
-
-
         builder.HasOne(e => e.PayFrequency)
             .WithOne(s => s.Customer)
             .HasForeignKey<Customer>(m => m.PayFrequencyId);

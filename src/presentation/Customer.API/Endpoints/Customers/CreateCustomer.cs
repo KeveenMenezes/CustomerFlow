@@ -23,7 +23,13 @@ public static class CreateCustomerEndpoint
 {
     public static void MapEndpoint(this WebApplication app)
     {
-        app.MapPost("/api/v1/customer", CreateCustomer);
+        app.MapPost("/api/v1/customer", CreateCustomer)
+            .WithName("CreateCustomer")
+            .WithTags("Customer")
+            .Produces(StatusCodes.Status200OK)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithSummary("Creates a new customer with basic personal information, address, and contact.")
+            .WithDescription("This endpoint creates a new customer by accepting personal, address, and contact information.");
     }
 
     public static async Task<Results<Ok<CreateCustomerResponse>, ProblemHttpResult>> CreateCustomer(

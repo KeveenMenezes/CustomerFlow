@@ -16,6 +16,9 @@ public class Customer
     public string ZipCode { get; private set; }
     public string Country { get; private set; }
 
+    public int PayFrequencyId { get; private set; }
+    public PayFrequency PayFrequency { get; private set; }
+
     public static Customer Create(
         string firstName,
         string lastName,
@@ -73,5 +76,35 @@ public class Customer
         Password = newPassword;
         AddDomainEvent(new CustomerPasswordUpdatedEvent(Email.Value));
     }
-}
 
+    public void AddPayFrequency(
+        int calendarId,
+        string description,
+        string frequency,
+        int periodsPerYear,
+        int payrollDiscountsPerYear,
+        int sizeFlux,
+        int countSizeFlux,
+        int sumSizeFlux)
+    {
+        if (PayFrequency != null)
+        {
+            throw new InvalidOperationException("Pay frequency already exists for this customer.");
+        }
+
+        var payFrequency = PayFrequency.Create(
+            Id,
+            calendarId,
+            description,
+            frequency,
+            periodsPerYear,
+            payrollDiscountsPerYear,
+            sizeFlux,
+            countSizeFlux,
+            sumSizeFlux);
+
+        PayFrequency = payFrequency;
+
+        //AddDomainEvent(new CustomerPayFrequencyAddedEvent(PayFrequencyId, payFrequency));
+    }
+}

@@ -2,18 +2,19 @@ namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 
 public class PayFrequency : Entity<int>
 {
-    public int CalendarId { get; set; }
-    public string Description { get; set; }
-    public string Frequency { get; set; }
-    public int PeriodsPerYear { get; set; }
-    public int PayrollDiscountsPerYear { get; set; }
-    public int SizeFlux { get; set; }
-    public int CountSizeFlux { get; set; }
-    public int SumSizeFlux { get; set; }
+    public string Description { get; private set; }
+    public string Frequency { get; private set; }
+    public int PeriodsPerYear { get; private set; }
+    public int PayrollDiscountsPerYear { get; private set; }
+    public int SizeFlux { get; private set; }
+    public int CountSizeFlux { get; private set; }
+    public int SumSizeFlux { get; private set; }
 
-    private PayFrequency() { }
+    public int CalendarId { get; private set; }
+    public int CustomerId { get; private set; }
 
     public static PayFrequency Create(
+        int customerId,
         int calendarId,
         string description,
         string frequency,
@@ -24,6 +25,7 @@ public class PayFrequency : Entity<int>
         int sumSizeFlux) =>
         new()
         {
+            CustomerId = customerId,
             CalendarId = calendarId,
             Description = description,
             Frequency = frequency,

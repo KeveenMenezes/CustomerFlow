@@ -16,8 +16,8 @@ public class Customer
     public string ZipCode { get; private set; }
     public string Country { get; private set; }
 
-    public int PayFrequencyId { get; private set; }
-    public PayFrequency PayFrequency { get; private set; }
+    public int? PayFrequencyId { get; private set; } = default!;
+    public PayFrequency? PayFrequency { get; private set; }
 
     public static Customer Create(
         string firstName,

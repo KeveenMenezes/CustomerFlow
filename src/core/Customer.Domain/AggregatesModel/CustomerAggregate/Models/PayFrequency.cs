@@ -12,6 +12,7 @@ public class PayFrequency : Entity<int>
 
     public int CalendarId { get; private set; }
     public int CustomerId { get; private set; }
+    public Customer Customer { get; private set; }
 
     public static PayFrequency Create(
         int customerId,

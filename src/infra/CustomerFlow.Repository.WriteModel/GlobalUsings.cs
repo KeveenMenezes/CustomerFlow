@@ -6,3 +6,4 @@ global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerLeadAggregate.Models;
 global using CustomerFlow.Infra.CommandRepository.Data;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;

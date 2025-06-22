@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration/" />
+    <Folder Include="Enums/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Refit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../core/Customer.Domain/CustomerFlow.Core.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

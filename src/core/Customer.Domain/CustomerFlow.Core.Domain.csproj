@@ -21,7 +21,6 @@
     <Folder Include="AggregatesModel/SpamDomainAggregate/Events/" />
     <Folder Include="AggregatesModel/SpamDomainAggregate/Models/" />
     <Folder Include="AggregatesModel/SpamDomainAggregate/ValueObjects/" />
-    <Folder Include="Enums/" />
   </ItemGroup>
 
 

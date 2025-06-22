@@ -60,7 +60,7 @@ public class Customer
         }
 
         Active = true;
-        AddDomainEvent(new CustomerActivedEvent(Id, Email.Value));
+        AddDomainEvent(new CustomerActivedEvent(Id, FirstName, State.Value));
     }
 
     public void UpdadePassword(Password newPassword)

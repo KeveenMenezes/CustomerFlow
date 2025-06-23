@@ -21,7 +21,7 @@ public record CreateCustomerResponse(
 
 public static class CreateCustomerEndpoint
 {
-    public static void MapEndpoint(this WebApplication app)
+    public static void MapCreateCustomerEndpoint(this WebApplication app)
     {
         app.MapPost("/customer", CreateCustomer)
             .WithName("CreateCustomer")

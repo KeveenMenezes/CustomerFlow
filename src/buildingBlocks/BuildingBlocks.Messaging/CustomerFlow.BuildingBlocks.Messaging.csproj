@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../infra/CustomerFlow.Repository.WriteModel/CustomerFlow.Infra.CommandRepository.csproj" />
+    <ProjectReference Include="../../core/Customer.Domain/CustomerFlow.Core.Domain.csproj" />
   </ItemGroup>
-
 </Project>

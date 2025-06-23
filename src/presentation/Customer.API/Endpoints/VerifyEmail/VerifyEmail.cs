@@ -6,7 +6,7 @@ public record VerifyEmailRequest(int CustomerId, string Code);
 
 public static class VerifyEmailEndpoint
 {
-    public static void MapEndpoint(this WebApplication app)
+    public static void MapVerifyEmailEndpoint(this WebApplication app)
     {
         app.MapPost("/api/v1/verifyemail", VerifyEmail)
             .WithName("VerifyEmail")

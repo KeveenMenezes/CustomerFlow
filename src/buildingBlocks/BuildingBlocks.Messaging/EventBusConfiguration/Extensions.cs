@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using CustomerFlow.Core.Domain.Abstractions;
-using CustomerFlow.Infra.CommandRepository.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,7 +26,7 @@ public static class Extentions
 
         services.AddCap(options =>
         {
-            options.UseEntityFramework<CustomerFlowDbContext>();
+            options.UseMySql(configuration.GetConnectionString("customerDb")!);
 
             options.UseKafka(kafkaOptions =>
             {

@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../buildingBlocks/BuildingBlocks.Core/CustomerFlow.BuildingBlocks.Core.csproj" />
     <ProjectReference Include="../../core/Customer.Domain/CustomerFlow.Core.Domain.csproj" />
   </ItemGroup>
 

@@ -39,6 +39,41 @@
           }
         }
       }
+    },
+    "/api/v1/verifyemail": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Verifies the email for a given customer using the provided code.",
+        "description": "This endpoint allows a customer to verify their email address by providing the customer ID and the verification code sent to them.",
+        "operationId": "VerifyEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyEmailRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -113,6 +148,22 @@
           "instance": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "VerifyEmailRequest": {
+        "required": [
+          "customerId",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "code": {
+            "type": "string"
           }
         }
       }

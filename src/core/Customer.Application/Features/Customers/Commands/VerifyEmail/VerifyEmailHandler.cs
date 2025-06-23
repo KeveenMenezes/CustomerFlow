@@ -2,9 +2,9 @@ namespace CustomerFlow.Core.Application.Features.Customers.Commands.VerifyEmail;
 
 public class VerifyEmailHandler(
     ICustomerCommandRepository customerCommandRepository
-) : ICommand<VerifyEmailCommand>
+) : ICommandHandler<VerifyEmailCommand>
 {
-    public async ValueTask Handle(
+    public async ValueTask<Mediator.Unit> Handle(
         VerifyEmailCommand request, CancellationToken cancellationToken)
     {
         var customer = await customerCommandRepository.GetByIdAsync(
@@ -14,5 +14,7 @@ public class VerifyEmailHandler(
         customer.VerifyEmailAccount(request.Code);
 
         await customerCommandRepository.SaveChangesAsync(cancellationToken);
+
+        return Mediator.Unit.Value;
     }
 }

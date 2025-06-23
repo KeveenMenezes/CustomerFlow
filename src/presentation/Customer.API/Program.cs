@@ -14,8 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services
     .AddOpenApi()
     .AddExceptionHandler<CustomExceptionHandler>()
-    .AddApplicationServices(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration)
+    .AddApplicationServices(builder.Configuration)
     .AddCustomerIntegrationAdapterServices();
 
 var app = builder.Build();

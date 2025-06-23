@@ -1,6 +1,7 @@
 namespace CustomerFlow.Infra.CommandRepository.RepositoryAdapters;
 
-public class CommandRepository<T>(CustomerFlowDbContext db)
+public class CommandRepository<T>(
+    CustomerFlowDbContext db)
     : ICommandRepository<T> where T : class, IAggregate
 {
     private readonly CustomerFlowDbContext _db = db;

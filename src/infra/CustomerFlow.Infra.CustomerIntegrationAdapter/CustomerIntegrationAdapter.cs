@@ -10,6 +10,9 @@ public class CustomerIntegrationAdapter(
 {
     public async Task<(bool IsWebBank, string StatesMessage)> GetStateInfoAsync(string customerStateAbbreviation)
     {
+
+        return (true, string.Empty);
+
         var statesResponse = await customerIntegrationApi.GetStateReponse();
 
         if (!statesResponse.IsSuccessStatusCode)

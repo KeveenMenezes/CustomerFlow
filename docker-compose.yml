@@ -1,47 +1,61 @@
 version: '3.8'
 services:
-  app:
-    build:
-      context: .
-      dockerfile: src/presentation/Customer.API/Dockerfile
-    ports:
-      - "8080:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=server=mysql;user=root;password=example;database=customerflow
-      - KAFKA_BROKER=kafka:9092
-    depends_on:
-      - mysql
-      - kafka
-      - zookeeper  # Adicionado
-
   mysql:
-      image: mysql:8.0
-      environment:
-        MYSQL_ROOT_PASSWORD: example
-        MYSQL_DATABASE: customerflow
-      ports:
-        - "3307:3306"
-      command: --default-authentication-plugin=mysql_native_password
-      healthcheck:
-        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-        interval: 10s
-        timeout: 5s
-        retries: 5
-
-  kafka:
-    image: bitnami/kafka:latest
+    image: mysql:8.0
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181  # Adicionado
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_LISTENERS: PLAINTEXT://:9092
-    depends_on:
-      - zookeeper
-    # Remova "ports" se não for necessário acesso externo
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: customerflow
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   zookeeper:
-    image: bitnami/zookeeper:latest
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    networks: 
+      - broker-kafka
+    ports:
+      - 2181:2181
     environment:
-      ALLOW_ANONYMOUS_LOGIN: "yes"
-    # Remova "ports" se não for necessário acesso externo
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    networks: 
+      - broker-kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_LOG_CLEANER_DELETE_RETENTION_MS: 5000
+      KAFKA_BROKER_ID: 1
+      KAFKA_MIN_INSYNC_REPLICAS: 1
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    container_name: kafdrop
+    networks: 
+      - broker-kafka
+    depends_on:
+      - kafka
+    ports:
+      - 9000:9000
+    environment:
+      KAFKA_BROKERCONNECT: kafka:29092
+
+networks: 
+  broker-kafka:
+    driver: bridge  

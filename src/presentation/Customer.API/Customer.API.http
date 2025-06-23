@@ -1,1 +1,20 @@
-@Customer.API_HostAddress = http://localhost:5001
+@CustomerFlow= http://localhost:5001
+
+
+### Post a new customer
+POST {{CustomerFlow}}/customer
+Content-Type: application/json
+Accept: application/json
+
+{
+    "FirstName": "João",
+    "LastName": "Silva",
+    "Email": "joao.silva@email.com",
+    "Password": "Senha123",
+    "PhoneNumber": "5511999999999",
+    "Address": "Rua Exemplo, 123",
+    "City": "São Paulo",
+    "State": "SP",
+    "ZipCode": "01000-000",
+    "Country": "Brasil"
+}

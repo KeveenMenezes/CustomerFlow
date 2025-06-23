@@ -12,11 +12,16 @@ public static class Extentions
         IConfiguration configuration,
         Assembly? assembly = null)
     {
+
+        services.AddScoped<IEventBusPublisher, EventBusPublisher>();
+
         var kafkaHost = configuration["MessageBroker:Host"];
 
         if (string.IsNullOrEmpty(kafkaHost))
         {
-            throw new ArgumentNullException(nameof(configuration), "MessageBroker:Host configuration is missing");
+            throw new ArgumentNullException(
+                nameof(configuration),
+                "MessageBroker:Host configuration is missing");
         }
 
         services.AddCap(options =>

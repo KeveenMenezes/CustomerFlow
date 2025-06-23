@@ -8,13 +8,14 @@ public class ValidationBehavior<TRequest, TResponse>
 {
     public async ValueTask<TResponse> Handle(
         TRequest message,
-        CancellationToken cancellationToken,
-        MessageHandlerDelegate<TRequest, TResponse> next)
+        MessageHandlerDelegate<TRequest, TResponse> next,
+        CancellationToken cancellationToken)
     {
         var context = new ValidationContext<TRequest>(message);
 
         var validationResults = await Task.WhenAll(
-            validators.Select(v => v.ValidateAsync(context, cancellationToken)));
+            validators.Select(v =>
+                v.ValidateAsync(context, cancellationToken)));
 
         var failures = validationResults
             .SelectMany(result => result.Errors)

@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: src/presentation/Customer.API/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=server=mysql;user=root;password=example;database=customerflow
+      - KAFKA_BROKER=kafka:9092
+    depends_on:
+      - mysql
+      - kafka
+      - zookeeper  # Adicionado
+
+  mysql:
+      image: mysql:8.0
+      environment:
+        MYSQL_ROOT_PASSWORD: example
+        MYSQL_DATABASE: customerflow
+      ports:
+        - "3307:3306"
+      command: --default-authentication-plugin=mysql_native_password
+      healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+
+  kafka:
+    image: bitnami/kafka:latest
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181  # Adicionado
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENERS: PLAINTEXT://:9092
+    depends_on:
+      - zookeeper
+    # Remova "ports" se não for necessário acesso externo
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+    # Remova "ports" se não for necessário acesso externo

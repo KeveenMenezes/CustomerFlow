@@ -23,7 +23,7 @@ public static class CreateCustomerEndpoint
 {
     public static void MapEndpoint(this WebApplication app)
     {
-        app.MapPost("/api/v1/customer", CreateCustomer)
+        app.MapPost("/customer", CreateCustomer)
             .WithName("CreateCustomer")
             .WithTags("Customer")
             .Produces(StatusCodes.Status200OK)
@@ -34,11 +34,12 @@ public static class CreateCustomerEndpoint
 
     public static async Task<Results<Ok<CreateCustomerResponse>, ProblemHttpResult>> CreateCustomer(
         CreateCustomerRequest request,
-        ISender sender)
+        IMediator mediator,
+        CancellationToken cancellationToken)
     {
         var command = request.Adapt<CreateCustomerCommand>();
 
-        var result = await sender.Send(command);
+        var result = await mediator.Send(command, cancellationToken);
 
         var response = result.Adapt<CreateCustomerResponse>();
 

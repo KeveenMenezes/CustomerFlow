@@ -1,3 +1,5 @@
+using CustomerFlow.BuildingBlocks.Core.DomainModel;
+
 namespace CustomerFlow.BuildingBlocks.Messaging.IntegrationEvents;
 
 public record SendVerificationTokenTwilio(

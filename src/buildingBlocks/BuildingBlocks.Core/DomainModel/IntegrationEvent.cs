@@ -1,4 +1,4 @@
-﻿namespace CustomerFlow.BuildingBlocks.Messaging.IntegrationEvents;
+﻿namespace CustomerFlow.BuildingBlocks.Core.DomainModel;
 
 public record IntegrationEvent
 {

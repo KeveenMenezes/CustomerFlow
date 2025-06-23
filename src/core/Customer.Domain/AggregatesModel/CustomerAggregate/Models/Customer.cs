@@ -77,7 +77,7 @@ public class Customer
         }
 
         Password = newPassword;
-        AddDomainEvent(new CustomerPasswordUpdatedEvent(Email.Value));
+        //AddDomainEvent(new CustomerPasswordUpdatedEvent(Email.Value));
     }
 
     public void AddPayFrequency(

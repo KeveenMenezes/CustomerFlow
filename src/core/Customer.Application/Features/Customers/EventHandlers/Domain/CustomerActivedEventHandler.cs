@@ -1,4 +1,3 @@
-using CustomerFlow.BuildingBlocks.Messaging.EventBusConfiguration;
 using Mediator;
 
 namespace CustomerFlow.Core.Application.Features.Customers.EventHandlers.Domain;
@@ -23,7 +22,7 @@ public class CustomerActivedEventHandler(
             { "states_bmg", StatesMessage }
         };
 
-        await publisher.PublishAsync(
+        publisher.AddIntegrationEvent(
             new SendVerificationTokenTwilio(
                 dataReplace,
                 SendTypeCommunication.Sms.ToValue(),
@@ -31,7 +30,6 @@ public class CustomerActivedEventHandler(
                 null,
                 domain.CustomerId,
                 null,
-                null),
-            cancellationToken);
+                null));
     }
 }

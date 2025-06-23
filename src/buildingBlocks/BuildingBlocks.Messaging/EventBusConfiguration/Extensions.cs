@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using CustomerFlow.Core.Domain.Abstractions;
 using CustomerFlow.Infra.CommandRepository.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

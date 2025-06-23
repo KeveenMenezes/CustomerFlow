@@ -1,3 +1,3 @@
 namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.DomainEvents;
 
-public record CustomerPasswordUpdatedEvent(string Email) : IDomainEvent;
+//public record CustomerPasswordUpdatedEvent(string Email) : IDomainEvent;

@@ -1,6 +1,7 @@
 ﻿namespace CustomerFlow.Infra.CommandRepository.Interceptors;
 
 public class DispatchDomainEventsInterceptor(
+    IEventBusPublisher eventBusPublisher,
     IMediator mediator)
     : SaveChangesInterceptor
 {
@@ -11,6 +12,7 @@ public class DispatchDomainEventsInterceptor(
         var saveChangesResult = base.SavingChanges(eventData, result);
 
         DispatchDomainEvents(eventData.Context).GetAwaiter().GetResult();
+        DispatchIntegrationEvents().GetAwaiter().GetResult();
 
         return saveChangesResult;
     }
@@ -21,6 +23,8 @@ public class DispatchDomainEventsInterceptor(
         var saveChangesResult = await base.SavingChangesAsync(eventData, result, cancellationToken);
 
         await DispatchDomainEvents(eventData.Context, cancellationToken);
+
+        await DispatchIntegrationEvents(cancellationToken);
 
         return saveChangesResult;
     }
@@ -43,6 +47,15 @@ public class DispatchDomainEventsInterceptor(
         foreach (var domainEvent in domainEvents)
         {
             await mediator.Publish(domainEvent, cancellationToken);
+        }
+    }
+
+    public async Task DispatchIntegrationEvents(
+        CancellationToken cancellationToken = default)
+    {
+        foreach (var integrationEvent in eventBusPublisher.ClearIntegrationEvents())
+        {
+            await eventBusPublisher.PublishAsync(integrationEvent, cancellationToken);
         }
     }
 }

@@ -37,7 +37,7 @@ public class CustomerIntegrationAdapter(
         {
             0 => string.Empty,
             1 => abbreviations[0],
-            _ => string.Join(", ", abbreviations.Take(abbreviations.Count - 1)) + " and " + abbreviations.Last()
+            _ => string.Join(", ", abbreviations.Take(abbreviations.Count - 1)) + " and " + abbreviations[^1]
         };
     }
 }

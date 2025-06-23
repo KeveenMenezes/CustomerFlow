@@ -11,7 +11,7 @@ Accept: application/json
     "LastName": "Silva",
     "Email": "joao.silva@email.com",
     "Password": "Senha123",
-    "PhoneNumber": "5511999999999",
+    "PhoneNumber": "(123)4567890",
     "Address": "Rua Exemplo, 123",
     "City": "São Paulo",
     "State": "SP",

@@ -1,5 +1,4 @@
 using CustomerFlow.BuildingBlocks.ServiceDefaults;
-using CustomerFlow.BuildingBlocks.ServiceDefaults.Behaviors;
 using CustomerFlow.BuildingBlocks.ServiceDefaults.Handlers;
 using CustomerFlow.Core.Application.Configuration;
 using CustomerFlow.Infra.CommandRepository.Configuration;

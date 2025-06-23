@@ -16,6 +16,7 @@ public static class DependencyInjection
         {
             try
             {
+                options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
                 options.UseMySql(connection, ServerVersion.AutoDetect(connection),
                     mysqlOptions =>
                     {
@@ -34,7 +35,6 @@ public static class DependencyInjection
             }
         });
 
-        services.AddScoped<DbContext, CustomerFlowDbContext>();
         return services;
     }
 }

@@ -18,6 +18,10 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageVersion>
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.13">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageVersion>
     <PackageVersion Include="Microsoft.Extensions.ApiDescription.Server" Version="9.0.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -30,12 +34,12 @@
     <PackageVersion Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.11.0-beta.2" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.4" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="9.0.4" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.13">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageVersion>
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.4.0" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.1.0" />
     <PackageVersion Include="Microsoft.FeatureManagement.AspNetCore" Version="4.0.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />

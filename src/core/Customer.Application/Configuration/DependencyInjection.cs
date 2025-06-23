@@ -1,7 +1,6 @@
 using System.Reflection;
 using CustomerFlow.BuildingBlocks.Messaging.EventBusConfiguration;
 using CustomerFlow.BuildingBlocks.ServiceDefaults.Behaviors;
-using CustomerFlow.Core.Application.Features.Customers.Commands.CreateCustomer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement;

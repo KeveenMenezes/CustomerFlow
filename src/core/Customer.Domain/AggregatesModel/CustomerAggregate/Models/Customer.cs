@@ -47,6 +47,9 @@ public class Customer
 
         customer.AddDomainEvent(new CustomerCreatedEvent(customer));
 
+        customer.AddDomainEvent(new CustomerActivedEvent(
+            customer.Id, customer.FirstName, customer.State.Value));
+
         return customer;
     }
 

@@ -20,23 +20,30 @@ public class CommandRepository<T>(
     public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
     {
         await Entity.AddAsync(entity, cancellationToken);
-        await SaveChangesAsync(cancellationToken);
     }
 
     public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
         Entity.Update(entity);
-        await SaveChangesAsync(cancellationToken);
     }
 
     public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
     {
         Entity.Remove(entity);
-        await SaveChangesAsync(cancellationToken);
     }
+}
 
-    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+public class CommandRepository<T, TId, TPublicId>(
+    CustomerFlowDbContext db)
+    : CommandRepository<T>(db), ICommandRepository<T, TId, TPublicId>
+    where T : class, IAggregate<TId, TPublicId>
+{
+    private readonly CustomerFlowDbContext _db = db;
+
+    public async Task<T?> GetByPublicIdAsync(TPublicId publicId, CancellationToken cancellationToken = default)
     {
-        await _db.SaveChangesAsync(cancellationToken);
+        return await _db.Set<T>().FirstOrDefaultAsync(
+            e => EF.Property<TPublicId>(e, "PublicId")!.Equals(publicId),
+            cancellationToken);
     }
 }

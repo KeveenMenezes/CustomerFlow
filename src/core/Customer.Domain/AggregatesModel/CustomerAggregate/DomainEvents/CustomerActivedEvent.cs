@@ -1,7 +1,8 @@
 namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.DomainEvents;
 
 public record CustomerActivedEvent(
-    int CustomerId,
+    PublicId PublicId,
     string FirstName,
-    string State
+    State State,
+    Id Id
 ) : IDomainEvent;

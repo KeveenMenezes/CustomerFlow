@@ -83,6 +83,10 @@ namespace CustomerFlow.Infra.CommandRepository.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("phoneNumber");
 
+                    b.Property<Guid?>("PublicId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("publicId");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("varchar(5)")
@@ -94,8 +98,7 @@ namespace CustomerFlow.Infra.CommandRepository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PayFrequencyId")
-                        .IsUnique();
+                    b.HasIndex("PayFrequencyId");
 
                     b.ToTable("Customers");
                 });
@@ -119,9 +122,6 @@ namespace CustomerFlow.Infra.CommandRepository.Migrations
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -157,16 +157,10 @@ namespace CustomerFlow.Infra.CommandRepository.Migrations
             modelBuilder.Entity("CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models.Customer", b =>
                 {
                     b.HasOne("CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models.PayFrequency", "PayFrequency")
-                        .WithOne("Customer")
-                        .HasForeignKey("CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models.Customer", "PayFrequencyId");
+                        .WithMany()
+                        .HasForeignKey("PayFrequencyId");
 
                     b.Navigation("PayFrequency");
-                });
-
-            modelBuilder.Entity("CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models.PayFrequency", b =>
-                {
-                    b.Navigation("Customer")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

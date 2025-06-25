@@ -1,10 +1,16 @@
 ﻿namespace CustomerFlow.BuildingBlocks.Core.DomainModel;
 
-public interface IEntity<T>
+public interface IEntity<TId, TPublicId>
+    : IEntity<TId>
+{
+    public TPublicId PublicId { get; set; }
+}
+
+public interface IEntity<TId>
     : IEntity
 {
-    public T Id { get; set; }
-    public IEntity<T> Create();
+    public TId Id { get; set; }
+    public IEntity<TId> Create();
     public void Update();
 }
 

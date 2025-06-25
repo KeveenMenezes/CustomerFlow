@@ -3,6 +3,7 @@ using Mediator;
 namespace CustomerFlow.Core.Application.Features.Customers.EventHandlers.Domain;
 
 public class CustomerActivedEventHandler(
+    ICustomerCommandRepository customerCommandRepository,
     ICustomerIntegrationAdapter customerIntegrationAdapter,
     IEventBusPublisher publisher,
     ILogger<CustomerActivedEventHandler> logger)
@@ -13,7 +14,7 @@ public class CustomerActivedEventHandler(
         logger.LogInformation(domain.ToString());
 
         var (IsWebBank, StatesMessage) = await customerIntegrationAdapter.
-            GetStateInfoAsync(domain.State);
+            GetStateInfoAsync(domain.State.Value);
 
         var dataReplace = new Dictionary<string, string>
         {
@@ -22,13 +23,19 @@ public class CustomerActivedEventHandler(
             { "states_bmg", StatesMessage }
         };
 
+        var customer = await customerCommandRepository
+            .GetByPublicIdAsync(domain.PublicId, cancellationToken);
+
+        customer?.UpdadePassword(
+            new Password("123AAA"));
+
         publisher.AddIntegrationEvent(
             new SendVerificationTokenTwilio(
                 dataReplace,
                 SendTypeCommunication.Sms.ToValue(),
                 IsWebBank ? "WebBank" : "Bank",
                 null,
-                domain.CustomerId,
+                domain.Id,
                 null,
                 null));
     }

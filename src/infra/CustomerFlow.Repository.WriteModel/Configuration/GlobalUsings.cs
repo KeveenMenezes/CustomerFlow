@@ -3,7 +3,7 @@ global using CustomerFlow.BuildingBlocks.Core.DomainModel;
 global using CustomerFlow.Core.Domain.Abstractions;
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Abstractions;
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
-global using CustomerFlow.Core.Domain.AggregatesModel.CustomerLeadAggregate.Models;
+global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.ValueObjects;
 global using CustomerFlow.Infra.CommandRepository.Data;
 global using CustomerFlow.Infra.CommandRepository.Interceptors;
 global using CustomerFlow.Infra.CommandRepository.RepositoryAdapters;

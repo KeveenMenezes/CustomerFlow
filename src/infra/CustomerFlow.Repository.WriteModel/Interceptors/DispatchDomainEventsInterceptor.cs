@@ -1,35 +1,23 @@
 ﻿namespace CustomerFlow.Infra.CommandRepository.Interceptors;
 
 public class DispatchDomainEventsInterceptor(
-    IEventBusPublisher eventBusPublisher,
     IMediator mediator)
     : SaveChangesInterceptor
 {
-    public override InterceptionResult<int> SavingChanges(
-        DbContextEventData eventData,
-        InterceptionResult<int> result)
-    {
-        var saveChangesResult = base.SavingChanges(eventData, result);
-
-        DispatchDomainEvents(eventData.Context).GetAwaiter().GetResult();
-        DispatchIntegrationEvents().GetAwaiter().GetResult();
-
-        return saveChangesResult;
-    }
-
     public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(
-        DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+        DbContextEventData eventData,
+        InterceptionResult<int> result,
+        CancellationToken cancellationToken = default)
     {
-        var saveChangesResult = await base.SavingChangesAsync(eventData, result, cancellationToken);
+        var dbContext = eventData.Context;
 
-        await DispatchDomainEvents(eventData.Context, cancellationToken);
+        await DispatchDomainEvents(dbContext, cancellationToken);
+        var resultSaveChange = await base.SavingChangesAsync(eventData, result, cancellationToken);
 
-        await DispatchIntegrationEvents(cancellationToken);
-
-        return saveChangesResult;
+        return resultSaveChange;
     }
 
-    public async Task DispatchDomainEvents(DbContext? dbContext, CancellationToken cancellationToken = default)
+    private async Task DispatchDomainEvents(DbContext? dbContext, CancellationToken cancellationToken = default)
     {
         if (dbContext == null) return;
 
@@ -50,12 +38,4 @@ public class DispatchDomainEventsInterceptor(
         }
     }
 
-    public async Task DispatchIntegrationEvents(
-        CancellationToken cancellationToken = default)
-    {
-        foreach (var integrationEvent in eventBusPublisher.ClearIntegrationEvents())
-        {
-            await eventBusPublisher.PublishAsync(integrationEvent, cancellationToken);
-        }
-    }
 }

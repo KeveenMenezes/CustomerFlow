@@ -41,7 +41,7 @@ public static class CreateCustomerEndpoint
 
         var result = await mediator.Send(command, cancellationToken);
 
-        var response = result.Adapt<CreateCustomerResponse>();
+        var response = new CreateCustomerResponse(result.CustomerId.Value);
 
         return TypedResults.Ok(response);
     }

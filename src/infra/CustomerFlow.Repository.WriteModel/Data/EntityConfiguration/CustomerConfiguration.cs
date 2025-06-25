@@ -1,17 +1,25 @@
-using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.ValueObjects;
-
 namespace CustomerFlow.Infra.CommandRepository.Data.EntityConfiguration;
 
 public class CustomerConfiguration
     : IEntityTypeConfiguration<Customer>
 {
+    private readonly IdFactory _idFactory = new();
+
     public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        builder.HasKey(c => c.Id);
+        builder.HasKey(o => o.Id);
 
-        builder.HasOne(e => e.PayFrequency)
-            .WithOne(s => s.Customer)
-            .HasForeignKey<Customer>(m => m.PayFrequencyId);
+        builder.Property(o => o.Id)
+            .HasConversion(
+                customerId => customerId.Value,
+                dbId => _idFactory.Create(dbId))
+            .ValueGeneratedOnAdd();
+
+        builder.Property(o => o.PublicId)
+            .HasConversion(
+                publicId => publicId.Value,
+                dbPublicId => new(dbPublicId))
+            .HasColumnName("publicId");
 
         builder.Property(c => c.Email)
             .HasConversion(

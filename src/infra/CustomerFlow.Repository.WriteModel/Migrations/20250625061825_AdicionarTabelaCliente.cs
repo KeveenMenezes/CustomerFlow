@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CustomerFlow.Infra.CommandRepository.Migrations
 {
     /// <inheritdoc />
-    public partial class MigrationInicial : Migration
+    public partial class AdicionarTabelaCliente : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,7 +31,6 @@ namespace CustomerFlow.Infra.CommandRepository.Migrations
                     CountSizeFlux = table.Column<int>(type: "int", nullable: false),
                     SumSizeFlux = table.Column<int>(type: "int", nullable: false),
                     CalendarId = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     CreatedBy = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -78,7 +77,8 @@ namespace CustomerFlow.Infra.CommandRepository.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastModified = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     LastModifiedBy = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    publicId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
                 },
                 constraints: table =>
                 {
@@ -94,8 +94,7 @@ namespace CustomerFlow.Infra.CommandRepository.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_PayFrequencyId",
                 table: "Customers",
-                column: "PayFrequencyId",
-                unique: true);
+                column: "PayFrequencyId");
         }
 
         /// <inheritdoc />

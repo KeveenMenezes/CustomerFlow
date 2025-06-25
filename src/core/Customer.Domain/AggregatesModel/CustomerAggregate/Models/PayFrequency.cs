@@ -11,11 +11,9 @@ public class PayFrequency : Entity<int>
     public int SumSizeFlux { get; private set; }
 
     public int CalendarId { get; private set; }
-    public int CustomerId { get; private set; }
-    public Customer Customer { get; private set; }
 
     public static PayFrequency Create(
-        int customerId,
+        Id customerId,
         int calendarId,
         string description,
         string frequency,
@@ -26,7 +24,6 @@ public class PayFrequency : Entity<int>
         int sumSizeFlux) =>
         new()
         {
-            CustomerId = customerId,
             CalendarId = calendarId,
             Description = description,
             Frequency = frequency,

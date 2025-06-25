@@ -14,7 +14,7 @@ public record CreateCustomerCommand(
 ) : ICommand<CreateCustomerResult>;
 
 public record CreateCustomerResult(
-    int CustomerId
+    Id CustomerId
 );
 
 public class CreateCustomerCommandValidator

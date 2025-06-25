@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../../core/Customer.Domain/CustomerFlow.Core.Domain.csproj" />
     <ProjectReference Include="../BuildingBlocks.Core/CustomerFlow.BuildingBlocks.Core.csproj" />
   </ItemGroup>
 

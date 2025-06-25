@@ -1,13 +1,13 @@
 namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 
 public class Customer
-    : Aggregate<int>
+    : Aggregate<Id, PublicId>
 {
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public Email Email { get; private set; }
     public bool Active { get; private set; }
-    public string? EmailVerificationCode { get; } // TODO: Implement email verification code generation logic
+    public string? EmailVerificationCode { get; }
     public Password Password { get; private set; }
     public PhoneNumber PhoneNumber { get; private set; }
     public string Address { get; private set; }
@@ -20,6 +20,7 @@ public class Customer
     public PayFrequency? PayFrequency { get; private set; }
 
     public static Customer Create(
+        PublicId publicId,
         string firstName,
         string lastName,
         Email email,
@@ -33,6 +34,7 @@ public class Customer
     {
         var customer = new Customer
         {
+            PublicId = publicId,
             FirstName = firstName,
             LastName = lastName,
             Email = email,
@@ -48,7 +50,7 @@ public class Customer
         customer.AddDomainEvent(new CustomerCreatedEvent(customer));
 
         customer.AddDomainEvent(new CustomerActivedEvent(
-            customer.Id, customer.FirstName, customer.State.Value));
+            customer.PublicId, customer.FirstName, customer.State, customer.Id));
 
         return customer;
     }
@@ -66,7 +68,7 @@ public class Customer
         }
 
         Active = true;
-        AddDomainEvent(new CustomerActivedEvent(Id, FirstName, State.Value));
+        //AddDomainEvent(new CustomerActivedEvent(PublicId, FirstName, State.Value));
     }
 
     public void UpdadePassword(Password newPassword)

@@ -5,6 +5,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructureServices(
         this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ICustomerCommandRepository, CustomerCommandRepository>();
 
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();

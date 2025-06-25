@@ -19,7 +19,11 @@ public static class DependencyInjection
             .AddMediator(config =>
             {
                 config.ServiceLifetime = ServiceLifetime.Scoped;
-                config.PipelineBehaviors = [typeof(ValidationBehavior<,>), typeof(LoggingBehavior<,>)];
+                config.PipelineBehaviors = [
+                    typeof(ValidationBehavior<,>),
+                    typeof(LoggingBehavior<,>),
+                    typeof(UnitOfWorkBehavior<,>)
+                ];
             })
             .AddValidatorsFromAssembly(assembly)
             .AddFeatureManagement(configuration);

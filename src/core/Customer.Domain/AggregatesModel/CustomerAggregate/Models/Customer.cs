@@ -1,7 +1,7 @@
 namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 
 public class Customer
-    : Aggregate<Id, PublicId>
+    : Aggregate<Id>
 {
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
@@ -15,6 +15,7 @@ public class Customer
     public State State { get; private set; }
     public string ZipCode { get; private set; }
     public string Country { get; private set; }
+    public PublicId PublicId { get; private set; }
 
     public int? PayFrequencyId { get; private set; } = default!;
     public PayFrequency? PayFrequency { get; private set; }
@@ -49,8 +50,7 @@ public class Customer
 
         customer.AddDomainEvent(new CustomerCreatedEvent(customer));
 
-        customer.AddDomainEvent(new CustomerActivedEvent(
-            customer.PublicId, customer.FirstName, customer.State, customer.Id));
+        customer.AddDomainEvent(new CustomerActivedEvent(customer));
 
         return customer;
     }

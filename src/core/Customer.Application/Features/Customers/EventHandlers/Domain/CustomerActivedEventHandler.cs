@@ -3,8 +3,8 @@ using Mediator;
 namespace CustomerFlow.Core.Application.Features.Customers.EventHandlers.Domain;
 
 public class CustomerActivedEventHandler(
-    ICustomerCommandRepository customerCommandRepository,
     ICustomerIntegrationAdapter customerIntegrationAdapter,
+    ICustomerCommandRepository customerCommandRepository,
     IEventBusPublisher publisher,
     ILogger<CustomerActivedEventHandler> logger)
     : INotificationHandler<CustomerActivedEvent>
@@ -14,20 +14,20 @@ public class CustomerActivedEventHandler(
         logger.LogInformation(domain.ToString());
 
         var (IsWebBank, StatesMessage) = await customerIntegrationAdapter.
-            GetStateInfoAsync(domain.State.Value);
+            GetStateInfoAsync(domain.Customer.State.Value);
 
         var dataReplace = new Dictionary<string, string>
         {
-            {"First Name", domain.FirstName},
+            {"First Name", domain.Customer.FirstName},
             { "DISCLAIMER_TODAY_DATE", DateTime.Now.ToString("MM/dd/yyyy")},
             { "states_bmg", StatesMessage }
         };
 
-        var customer = await customerCommandRepository
-            .GetByPublicIdAsync(domain.PublicId, cancellationToken);
+        var test = await customerCommandRepository.GetByIdAsync(domain.Customer.Id, cancellationToken);
 
-        customer?.UpdadePassword(
-            new Password("123AAA"));
+        test.UpdadePassword(new Password("NewPassword123"));
+
+        await customerCommandRepository.UpdateAsync(test, cancellationToken);
 
         publisher.AddIntegrationEvent(
             new SendVerificationTokenTwilio(
@@ -35,7 +35,7 @@ public class CustomerActivedEventHandler(
                 SendTypeCommunication.Sms.ToValue(),
                 IsWebBank ? "WebBank" : "Bank",
                 null,
-                domain.Id,
+                domain.Customer.Id.Value,
                 null,
                 null));
     }

@@ -7,12 +7,10 @@ public static class DependencyInjection
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ICustomerCommandRepository, CustomerCommandRepository>();
-
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
         var connection = configuration.GetConnectionString("customerDb");
-
         services.AddDbContext<CustomerFlowDbContext>((sp, options) =>
         {
             try

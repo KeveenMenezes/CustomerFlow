@@ -8,7 +8,7 @@ public record SendVerificationTokenTwilio(
     string SendType,
     string CommunicationType,
     DateTime? SendDate,
-    Id CustomerId,
+    int CustomerId,
     string? LoanNumber,
     string? Attachment
 ) : IntegrationEvent;

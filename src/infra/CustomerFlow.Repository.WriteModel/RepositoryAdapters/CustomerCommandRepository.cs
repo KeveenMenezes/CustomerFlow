@@ -1,17 +1,21 @@
 namespace CustomerFlow.Infra.CommandRepository.RepositoryAdapters;
 
-public class CustomerCommandRepository(CustomerFlowDbContext dbContext)
-    : CommandRepository<Customer, Id, PublicId>(dbContext), ICustomerCommandRepository
+public class CustomerCommandRepository(
+    CustomerFlowDbContext dbContext,
+    IUnitOfWork unitOfWork)
+    : CommandRepository<Customer>(dbContext, unitOfWork), ICustomerCommandRepository
 {
+    private readonly CustomerFlowDbContext _dbContext = dbContext;
+
     public async Task UpadatePasswordAsync(
         Id customerId, string password, CancellationToken cancellationToken = default)
     {
-        await dbContext.Customers
+        await _dbContext.Customers
             .Where(c => c.Id == customerId)
             .ExecuteUpdateAsync(
                 u => u.SetProperty(c => c.Password, new Password(password)),
                 cancellationToken);
 
-        await dbContext.SaveChangesAsync(cancellationToken);
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 }

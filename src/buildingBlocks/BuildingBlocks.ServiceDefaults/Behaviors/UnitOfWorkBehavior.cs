@@ -10,18 +10,20 @@ public class UnitOfWorkBehavior<TRequest, TResponse>(
     where TRequest : notnull, IRequest<TResponse>
     where TResponse : notnull
 {
-    public async ValueTask<TResponse> Handle(TRequest message, MessageHandlerDelegate<TRequest, TResponse> next, CancellationToken cancellationToken)
+    public async ValueTask<TResponse> Handle(
+        TRequest message, MessageHandlerDelegate<TRequest, TResponse> next, CancellationToken cancellationToken)
     {
         if (!IsCommand())
         {
             return await next(message, cancellationToken);
         }
 
-        var response = await next(message, cancellationToken);
-
-        await unitOfWork.SaveChangesAsync(cancellationToken);
-
-        await DispatchIntegrationEvents(cancellationToken);
+        TResponse response = default!;
+        await unitOfWork.ExecuteInTransactionAsync(async () =>
+        {
+            response = await next(message, cancellationToken);
+            await DispatchIntegrationEvents(cancellationToken);
+        }, cancellationToken);
 
         return response;
     }

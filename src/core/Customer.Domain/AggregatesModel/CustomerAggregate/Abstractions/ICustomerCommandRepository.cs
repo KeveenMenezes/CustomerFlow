@@ -1,7 +1,7 @@
 namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Abstractions;
 
 public interface ICustomerCommandRepository
-    : ICommandRepository<Customer, Id, PublicId>
+    : ICommandRepository<Customer>
 {
     public Task UpadatePasswordAsync(
         Id customerId,

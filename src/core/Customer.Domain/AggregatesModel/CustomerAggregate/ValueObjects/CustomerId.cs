@@ -2,27 +2,18 @@ namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.ValueObject
 
 public class Id
 {
-    public Id() { } // <-- Make this public
-    public Id(int value)
+    private Id(int value) => Value = value;
+
+    public static Id Of(int value)
     {
-        Value = value;
+        if (value == 0)
+        {
+            //TODO: criar uma exception customizada
+            throw new ArgumentException($"Invalid customer id: {value}", nameof(value));
+        }
+
+        return new Id(value);
     }
+
     public int Value { get; }
-}
-
-public class PublicId
-{
-    public PublicId() { } // <-- Make this public
-
-    public PublicId(Guid value)
-    {
-        Value = value;
-    }
-
-    public PublicId Set(Guid value)
-    {
-        return new PublicId(value);
-    }
-
-    public Guid Value { get; }
 }

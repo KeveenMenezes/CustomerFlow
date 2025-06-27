@@ -1,5 +1,4 @@
 using CustomerFlow.BuildingBlocks.Core.DomainModel;
-using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.ValueObjects;
 
 namespace CustomerFlow.BuildingBlocks.Messaging.IntegrationEvents;
 

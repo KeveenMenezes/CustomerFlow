@@ -1,9 +1,7 @@
-
 namespace CustomerFlow.Infra.CommandRepository.RepositoryAdapters;
 
 public class CommandRepository<T>(
-    CustomerFlowDbContext db,
-    IUnitOfWork unitOfWork)
+    CustomerFlowDbContext db)
     : ICommandRepository<T> where T : class, IAggregate
 {
     private readonly CustomerFlowDbContext _db = db;
@@ -19,26 +17,31 @@ public class CommandRepository<T>(
         return await Entity.FindAsync([id], cancellationToken);
     }
 
+    public async Task<T?> GetByIdAsync(Id id, CancellationToken cancellationToken = default)
+    {
+        return await Entity.FindAsync([id], cancellationToken);
+    }
+
     public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
     {
         await Entity.AddAsync(entity, cancellationToken);
-        await unitOfWork.SaveChangesAsync(cancellationToken);
+        await _db.SaveChangesAsync(cancellationToken);
     }
 
     public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
         Entity.Update(entity);
-        await unitOfWork.SaveChangesAsync(cancellationToken);
+        await _db.SaveChangesAsync(cancellationToken);
     }
 
     public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
     {
         Entity.Remove(entity);
-        await unitOfWork.SaveChangesAsync(cancellationToken);
+        await _db.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<T?> GetByIdAsync(Id id, CancellationToken cancellationToken = default)
+    public async Task SaveChangesAsync(T entity, CancellationToken cancellationToken = default)
     {
-        return await Entity.FindAsync([id], cancellationToken);
+        await _db.SaveChangesAsync(cancellationToken);
     }
 }

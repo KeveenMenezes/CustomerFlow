@@ -10,14 +10,8 @@ public class CustomerConfiguration
         builder.Property(o => o.Id)
             .HasConversion(
                 customerId => customerId.Value,
-                dbId => new(dbId))
+                dbId => Id.Of(dbId))
             .ValueGeneratedOnAdd();
-
-        builder.Property(o => o.PublicId)
-            .HasConversion(
-                publicId => publicId.Value,
-                dbPublicId => new(dbPublicId))
-            .HasColumnName("publicId");
 
         builder.Property(c => c.Email)
             .HasConversion(
@@ -50,5 +44,11 @@ public class CustomerConfiguration
             .HasColumnName("state")
             .HasColumnType("varchar(5)")
             .IsRequired();
+
+
+        builder.HasOne(c => c.PayFrequency)
+            .WithOne(pf => pf.Customer)
+            .HasForeignKey<PayFrequency>(pf => pf.CustomerId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

@@ -15,13 +15,11 @@ public class Customer
     public State State { get; private set; }
     public string ZipCode { get; private set; }
     public string Country { get; private set; }
-    public PublicId PublicId { get; private set; }
 
     public int? PayFrequencyId { get; private set; } = default!;
     public PayFrequency? PayFrequency { get; private set; }
 
     public static Customer Create(
-        PublicId publicId,
         string firstName,
         string lastName,
         Email email,
@@ -35,7 +33,6 @@ public class Customer
     {
         var customer = new Customer
         {
-            PublicId = publicId,
             FirstName = firstName,
             LastName = lastName,
             Email = email,
@@ -68,7 +65,7 @@ public class Customer
         }
 
         Active = true;
-        //AddDomainEvent(new CustomerActivedEvent(PublicId, FirstName, State.Value));
+        //AddDomainEvent(new CustomerActivedEvent(FirstName, State.Value));
     }
 
     public void UpdadePassword(Password newPassword)

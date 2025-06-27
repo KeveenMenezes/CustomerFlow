@@ -1,9 +1,8 @@
 namespace CustomerFlow.Infra.CommandRepository.RepositoryAdapters;
 
 public class CustomerCommandRepository(
-    CustomerFlowDbContext dbContext,
-    IUnitOfWork unitOfWork)
-    : CommandRepository<Customer>(dbContext, unitOfWork), ICustomerCommandRepository
+    CustomerFlowDbContext dbContext)
+    : CommandRepository<Customer>(dbContext), ICustomerCommandRepository
 {
     private readonly CustomerFlowDbContext _dbContext = dbContext;
 

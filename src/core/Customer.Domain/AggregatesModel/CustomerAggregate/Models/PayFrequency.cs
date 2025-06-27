@@ -1,6 +1,7 @@
 namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 
-public class PayFrequency : Entity<int>
+public class PayFrequency
+    : Entity<Id>
 {
     public string Description { get; private set; }
     public string Frequency { get; private set; }
@@ -9,8 +10,10 @@ public class PayFrequency : Entity<int>
     public int SizeFlux { get; private set; }
     public int CountSizeFlux { get; private set; }
     public int SumSizeFlux { get; private set; }
-
     public int CalendarId { get; private set; }
+
+    public Id CustomerId { get; private set; }
+    public Customer Customer { get; private set; } = default!;
 
     public static PayFrequency Create(
         Id customerId,
@@ -24,6 +27,7 @@ public class PayFrequency : Entity<int>
         int sumSizeFlux) =>
         new()
         {
+            CustomerId = customerId,
             CalendarId = calendarId,
             Description = description,
             Frequency = frequency,

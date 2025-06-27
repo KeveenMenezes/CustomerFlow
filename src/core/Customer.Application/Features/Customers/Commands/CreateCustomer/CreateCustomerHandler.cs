@@ -10,7 +10,6 @@ public class CreateCustomerHandler(
         CancellationToken cancellationToken)
     {
         var customer = Customer.Create(
-            publicId: new PublicId(Guid.NewGuid()),
             firstName: request.FirstName,
             lastName: request.LastName,
             email: new Email(request.Email),

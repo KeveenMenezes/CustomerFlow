@@ -7,7 +7,7 @@ public class CustomerCommandRepository(
     private readonly CustomerFlowDbContext _dbContext = dbContext;
 
     public async Task UpadatePasswordAsync(
-        Id customerId, string password, CancellationToken cancellationToken = default)
+        CustomerId customerId, string password, CancellationToken cancellationToken = default)
     {
         await _dbContext.Customers
             .Where(c => c.Id == customerId)

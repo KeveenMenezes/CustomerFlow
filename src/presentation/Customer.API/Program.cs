@@ -3,8 +3,6 @@ using CustomerFlow.BuildingBlocks.ServiceDefaults.Handlers;
 using CustomerFlow.Core.Application.Configuration;
 using CustomerFlow.Infra.CommandRepository.Configuration;
 using CustomerFlow.Infra.CustomerIntegrationAdapter.Configuration;
-using CustomerFlow.Presentation.API.Endpoints.Customers;
-using CustomerFlow.Presentation.API.Endpoints.VerifyEmail;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -32,8 +30,6 @@ app.UseSwaggerUI(options =>
 
 app.MapDefaultEndpoints();
 
-app.MapCreateCustomerEndpoint();
-app.MapVerifyEmailEndpoint();
-
+app.MapAllEndpoints();
 
 await app.RunAsync();

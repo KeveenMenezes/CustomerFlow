@@ -17,7 +17,7 @@ public class CommandRepository<T>(
         return await Entity.FindAsync([id], cancellationToken);
     }
 
-    public async Task<T?> GetByIdAsync(Id id, CancellationToken cancellationToken = default)
+    public async Task<T?> GetByIdAsync(IEntityId id, CancellationToken cancellationToken = default)
     {
         return await Entity.FindAsync([id], cancellationToken);
     }

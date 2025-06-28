@@ -4,7 +4,7 @@ public interface ICustomerCommandRepository
     : ICommandRepository<Customer>
 {
     public Task UpadatePasswordAsync(
-        Id customerId,
+        CustomerId customerId,
         string password,
         CancellationToken cancellationToken = default);
 }

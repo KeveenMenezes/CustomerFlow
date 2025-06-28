@@ -7,6 +7,12 @@ public class PayFrequencyConfiguration
     {
         builder.HasKey(p => p.Id);
 
+        builder.Property(o => o.Id)
+            .HasConversion(
+                customerId => customerId.Value,
+                dbId => PayFrequencyId.Of(dbId))
+            .ValueGeneratedOnAdd();
+
         builder.Property(p => p.Description)
             .IsRequired()
             .HasMaxLength(200);
@@ -24,10 +30,5 @@ public class PayFrequencyConfiguration
 
         builder.Property(p => p.CustomerId)
             .IsRequired();
-
-        builder.HasOne(p => p.Customer)
-            .WithMany()
-            .HasForeignKey(p => p.CustomerId)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 }

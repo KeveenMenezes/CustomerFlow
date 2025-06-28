@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="AggregatesModel/CustomerAggregate/ValueObjects/.config/dotnet-tools.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="../../buildingBlocks/BuildingBlocks.Core/CustomerFlow.BuildingBlocks.Core.csproj" />
   </ItemGroup>
 

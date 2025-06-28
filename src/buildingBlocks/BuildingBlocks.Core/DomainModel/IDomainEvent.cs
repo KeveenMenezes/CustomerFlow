@@ -1,5 +1,10 @@
 ﻿namespace CustomerFlow.BuildingBlocks.Core.DomainModel;
 
+public interface IDomainEvent<out IAggregate> : IDomainEvent
+{
+    IAggregate Aggregate { get; }
+}
+
 public interface IDomainEvent : INotification
 {
     Guid EventId => Guid.NewGuid();

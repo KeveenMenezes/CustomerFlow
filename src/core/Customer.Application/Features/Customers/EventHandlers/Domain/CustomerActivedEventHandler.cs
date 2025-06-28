@@ -14,16 +14,16 @@ public class CustomerActivedEventHandler(
         logger.LogInformation(domain.ToString());
 
         var (IsWebBank, StatesMessage) = await customerIntegrationAdapter.
-            GetStateInfoAsync(domain.Customer.State.Value);
+            GetStateInfoAsync(domain.Aggregate.State.Value);
 
         var dataReplace = new Dictionary<string, string>
         {
-            {"First Name", domain.Customer.FirstName},
+            {"First Name", domain.Aggregate.FirstName},
             { "DISCLAIMER_TODAY_DATE", DateTime.Now.ToString("MM/dd/yyyy")},
             { "states_bmg", StatesMessage }
         };
 
-        var test = await customerCommandRepository.GetByIdAsync(domain.Customer.Id, cancellationToken);
+        var test = await customerCommandRepository.GetByIdAsync(domain.Aggregate.Id, cancellationToken);
 
         test.UpdadePassword(new Password("NewPassword123"));
 
@@ -35,7 +35,7 @@ public class CustomerActivedEventHandler(
                 SendTypeCommunication.Sms.ToValue(),
                 IsWebBank ? "WebBank" : "Bank",
                 null,
-                domain.Customer.Id.Value,
+                domain.Aggregate.Id.Value,
                 null,
                 null));
     }

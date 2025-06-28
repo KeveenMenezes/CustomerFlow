@@ -10,7 +10,7 @@ public class CustomerConfiguration
         builder.Property(o => o.Id)
             .HasConversion(
                 customerId => customerId.Value,
-                dbId => Id.Of(dbId))
+                dbId => CustomerId.Of(dbId))
             .ValueGeneratedOnAdd();
 
         builder.Property(c => c.Email)

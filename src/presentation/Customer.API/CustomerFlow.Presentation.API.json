@@ -5,19 +5,19 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/customer": {
+    "/verifyemail": {
       "post": {
         "tags": [
-          "Customer"
+          "VerifyEmail"
         ],
-        "summary": "Creates a new customer with basic personal information, address, and contact.",
-        "description": "This endpoint creates a new customer by accepting personal, address, and contact information.",
-        "operationId": "CreateCustomer",
+        "summary": "Verifies the email for a given customer using the provided code.",
+        "description": "This endpoint allows a customer to verify their email address by providing the customer ID and the verification code sent to them.",
+        "operationId": "VerifyEmail",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateCustomerRequest"
+                "$ref": "#/components/schemas/VerifyEmailRequest"
               }
             }
           },
@@ -40,19 +40,19 @@
         }
       }
     },
-    "/api/v1/verifyemail": {
+    "/customer": {
       "post": {
         "tags": [
           "Customer"
         ],
-        "summary": "Verifies the email for a given customer using the provided code.",
-        "description": "This endpoint allows a customer to verify their email address by providing the customer ID and the verification code sent to them.",
-        "operationId": "VerifyEmail",
+        "summary": "Creates a new customer with basic personal information, address, and contact.",
+        "description": "This endpoint creates a new customer by accepting personal, address, and contact information.",
+        "operationId": "CreateCustomer",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VerifyEmailRequest"
+                "$ref": "#/components/schemas/CreateCustomerRequest"
               }
             }
           },
@@ -170,6 +170,9 @@
     }
   },
   "tags": [
+    {
+      "name": "VerifyEmail"
+    },
     {
       "name": "Customer"
     }

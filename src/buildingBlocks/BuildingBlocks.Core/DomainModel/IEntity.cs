@@ -2,6 +2,7 @@
 
 public interface IEntity<TId>
     : IEntity
+    where TId : IEntityId
 {
     public TId Id { get; set; }
     public IEntity<TId> Create();

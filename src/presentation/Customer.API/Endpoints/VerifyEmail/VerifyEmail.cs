@@ -4,13 +4,13 @@ namespace CustomerFlow.Presentation.API.Endpoints.VerifyEmail;
 
 public record VerifyEmailRequest(int CustomerId, string Code);
 
-public static class VerifyEmailEndpoint
+public class VerifyEmailEndpoint : IEndpoint
 {
-    public static void MapVerifyEmailEndpoint(this WebApplication app)
+    public static void MapEndpoint(WebApplication app)
     {
-        app.MapPost("/api/v1/verifyemail", VerifyEmail)
+        app.MapPost("/verifyemail", VerifyEmail)
             .WithName("VerifyEmail")
-            .WithTags("Customer")
+            .WithTags("VerifyEmail")
             .Produces(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Verifies the email for a given customer using the provided code.")

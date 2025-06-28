@@ -19,9 +19,9 @@ public record CreateCustomerResponse(
     int CustomerId
 );
 
-public static class CreateCustomerEndpoint
+public class CreateCustomerEndpoint : IEndpoint
 {
-    public static void MapCreateCustomerEndpoint(this WebApplication app)
+    public static void MapEndpoint(WebApplication app)
     {
         app.MapPost("/customer", CreateCustomer)
             .WithName("CreateCustomer")

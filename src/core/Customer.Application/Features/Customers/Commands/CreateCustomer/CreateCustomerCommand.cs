@@ -1,3 +1,5 @@
+using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.ValueObjects.EntityIds;
+
 namespace CustomerFlow.Core.Application.Features.Customers.Commands.CreateCustomer;
 
 public record CreateCustomerCommand(
@@ -14,7 +16,7 @@ public record CreateCustomerCommand(
 ) : ICommand<CreateCustomerResult>;
 
 public record CreateCustomerResult(
-    Id CustomerId
+    CustomerId CustomerId
 );
 
 public class CreateCustomerCommandValidator

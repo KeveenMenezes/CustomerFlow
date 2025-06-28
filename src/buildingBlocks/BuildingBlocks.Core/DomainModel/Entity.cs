@@ -2,6 +2,7 @@
 
 public abstract class Entity<T>
     : IEntity<T>
+    where T : IEntityId
 {
     public T Id { get; set; }
     public DateTime? CreatedAt { get; set; }

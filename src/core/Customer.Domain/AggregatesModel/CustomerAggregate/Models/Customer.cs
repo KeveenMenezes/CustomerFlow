@@ -1,8 +1,9 @@
 namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 
 public class Customer
-    : Aggregate<Id>
+    : Aggregate<CustomerId>
 {
+
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public Email Email { get; private set; }
@@ -45,8 +46,6 @@ public class Customer
             Country = country,
         };
 
-        customer.AddDomainEvent(new CustomerCreatedEvent(customer));
-
         customer.AddDomainEvent(new CustomerActivedEvent(customer));
 
         return customer;
@@ -65,7 +64,6 @@ public class Customer
         }
 
         Active = true;
-        //AddDomainEvent(new CustomerActivedEvent(FirstName, State.Value));
     }
 
     public void UpdadePassword(Password newPassword)

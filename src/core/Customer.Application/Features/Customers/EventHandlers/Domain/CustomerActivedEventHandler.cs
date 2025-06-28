@@ -23,11 +23,9 @@ public class CustomerActivedEventHandler(
             { "states_bmg", StatesMessage }
         };
 
-        var test = await customerCommandRepository.GetByIdAsync(domain.Aggregate.Id, cancellationToken);
+        domain.Aggregate.UpdadePassword(new Password("NewPassword123"));
 
-        test.UpdadePassword(new Password("NewPassword123"));
-
-        await customerCommandRepository.UpdateAsync(test, cancellationToken);
+        await customerCommandRepository.UpdateAsync(domain.Aggregate, cancellationToken);
 
         publisher.AddIntegrationEvent(
             new SendVerificationTokenTwilio(

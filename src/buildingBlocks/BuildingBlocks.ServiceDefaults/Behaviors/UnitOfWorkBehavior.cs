@@ -22,9 +22,9 @@ public class UnitOfWorkBehavior<TRequest, TResponse>(
         await unitOfWork.ExecuteInTransactionAsync(async () =>
         {
             response = await next(message, cancellationToken);
-            await DispatchIntegrationEvents(cancellationToken);
         }, cancellationToken);
 
+        await DispatchIntegrationEvents(cancellationToken);
         return response;
     }
 

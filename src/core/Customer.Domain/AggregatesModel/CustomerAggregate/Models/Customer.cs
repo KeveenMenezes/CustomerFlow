@@ -76,7 +76,7 @@ public class Customer
         }
 
         Password = newPassword;
-        //AddDomainEvent(new CustomerPasswordUpdatedEvent(Email.Value));
+        AddDomainEvent(new CustomerPasswordUpdatedEvent(this));
     }
 
     public void AddPayFrequency(
@@ -107,6 +107,6 @@ public class Customer
 
         PayFrequency = payFrequency;
 
-        //AddDomainEvent(new CustomerPayFrequencyAddedEvent(PayFrequencyId, payFrequency));
+        //AddDomainEvent(new CustomerPayFrequencyAddedEvent(this));
     }
 }

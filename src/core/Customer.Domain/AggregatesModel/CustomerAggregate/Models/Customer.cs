@@ -46,6 +46,8 @@ public class Customer
             Country = country,
         };
 
+        customer.AddDomainEvent(new CustomerCreatedEvent(customer));
+
         customer.AddDomainEvent(new CustomerActivedEvent(customer));
 
         return customer;

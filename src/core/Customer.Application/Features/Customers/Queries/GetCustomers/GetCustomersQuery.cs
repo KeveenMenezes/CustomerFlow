@@ -1,23 +1,7 @@
 namespace CustomerFlow.Core.Application.Features.Customers.Queries.GetCustomers;
 
 public record GetCustomersQuery()
-    : IQuery<GetCustomersResult>
-{
-    public const string Query = @"
-        SELECT
-            id,
-            firstName,
-            lastName,
-            email,
-            phoneNumber,
-            address,
-            city,
-            state,
-            zipCode,
-            country
-        FROM Customers";
-}
-
+    : IQuery<GetCustomersResult>;
 
 public record GetCustomersResult(
     IEnumerable<GetCustomerResult> Customers
@@ -36,3 +20,20 @@ public record GetCustomerResult(
     string ZipCode,
     string Country
 );
+
+public static class GetCustomersSql
+{
+    public const string Query = @"
+        SELECT
+            id,
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            address,
+            city,
+            state,
+            zipCode,
+            country
+        FROM Customers";
+}

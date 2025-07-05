@@ -10,7 +10,7 @@ public class GetCustomersHandler(
         await using var connection = queryRepository.CreateConnectionAsync(cancellationToken);
 
         var getCustomers = await connection.QueryAsync<GetCustomerResult>(
-            GetCustomersQuery.Query, cancellationToken);
+            GetCustomersSql.Query, cancellationToken);
 
         return new GetCustomersResult(getCustomers);
     }

@@ -18,3 +18,10 @@ services:
     image: apache/kafka-native:4.0.0
     ports:
       - "9092:9092"
+
+  redis:
+    image: redis
+    command: redis-server
+    ports:
+      - "32769:6379"
+      

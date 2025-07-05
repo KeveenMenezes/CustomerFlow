@@ -3,6 +3,7 @@ using CustomerFlow.BuildingBlocks.ServiceDefaults.Handlers;
 using CustomerFlow.Core.Application.Configuration;
 using CustomerFlow.Infra.CommandRepository.Configuration;
 using CustomerFlow.Infra.CustomerIntegrationAdapter.Configuration;
+using CustomerFlow.Infra.QueryRepository.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -14,7 +15,8 @@ builder.Services
     .AddOpenApi()
     .AddExceptionHandler<CustomExceptionHandler>()
     .AddApplicationServices(builder.Configuration)
-    .AddInfrastructureServices(builder.Configuration)
+    .AddCommandRepositoryServices(builder.Configuration)
+    .AddQueryRepositoryServices()
     .AddCustomerIntegrationAdapterServices();
 
 var app = builder.Build();

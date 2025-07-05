@@ -7,7 +7,6 @@ global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.ValueObj
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.ValueObjects.EntityIds;
 global using CustomerFlow.Infra.CommandRepository.Data;
 global using CustomerFlow.Infra.CommandRepository.Interceptors;
-global using CustomerFlow.Infra.CommandRepository.RepositoryAdapters;
 global using Mediator;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Diagnostics;

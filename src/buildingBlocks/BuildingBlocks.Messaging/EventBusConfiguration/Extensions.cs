@@ -26,7 +26,7 @@ public static class Extentions
 
         services.AddCap(options =>
         {
-            options.UseMySql(configuration.GetConnectionString("customerDb")!);
+            options.UseMySql(configuration.GetConnectionString("customerDbEf")!);
 
             options.UseKafka(kafkaOptions =>
             {

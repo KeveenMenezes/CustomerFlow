@@ -1,4 +1,4 @@
-namespace CustomerFlow.Infra.CommandRepository.RepositoryAdapters;
+namespace CustomerFlow.Infra.CommandRepository.CommandRepositories;
 
 public class UnitOfWork(CustomerFlowDbContext context)
     : IUnitOfWork

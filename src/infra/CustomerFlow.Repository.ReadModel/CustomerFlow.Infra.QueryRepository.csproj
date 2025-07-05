@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../buildingBlocks/BuildingBlocks.ServiceDefaults/CustomerFlow.BuildingBlocks.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

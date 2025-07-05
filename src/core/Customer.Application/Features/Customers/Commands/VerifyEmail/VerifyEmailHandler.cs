@@ -13,6 +13,8 @@ public class VerifyEmailHandler(
 
         customer.VerifyEmailAccount(request.Code);
 
+        await customerCommandRepository.UpdateAsync(customer, cancellationToken);
+
         return Mediator.Unit.Value;
     }
 }

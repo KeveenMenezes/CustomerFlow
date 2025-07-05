@@ -1,11 +1,13 @@
 global using CustomerFlow.BuildingBlocks.Core.CQRS;
 global using CustomerFlow.BuildingBlocks.Core.Exceptions;
 global using CustomerFlow.BuildingBlocks.Messaging.IntegrationEvents;
+global using CustomerFlow.BuildingBlocks.ServiceDefaults.QueriesAbstractions;
 global using CustomerFlow.Core.Domain.Abstractions;
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Abstractions;
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.DomainEvents;
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 global using CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.ValueObjects;
 global using CustomerFlow.Core.Domain.Enums;
+global using Dapper;
 global using FluentValidation;
 global using Microsoft.Extensions.Logging;

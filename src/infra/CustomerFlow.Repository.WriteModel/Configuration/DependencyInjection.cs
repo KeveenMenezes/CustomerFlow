@@ -1,8 +1,10 @@
+using CustomerFlow.Infra.CommandRepository.CommandRepositories;
+
 namespace CustomerFlow.Infra.CommandRepository.Configuration;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructureServices(
+    public static IServiceCollection AddCommandRepositoryServices(
         this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -10,7 +12,7 @@ public static class DependencyInjection
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
-        var connection = configuration.GetConnectionString("customerDb");
+        var connection = configuration.GetConnectionString("customerDbEf");
         services.AddDbContext<CustomerFlowDbContext>((sp, options) =>
         {
             try

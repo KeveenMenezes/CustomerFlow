@@ -1,5 +1,8 @@
 @CustomerFlow= http://localhost:5001
 
+### Get all customers
+GET {{CustomerFlow}}/customer
+Accept: application/json
 
 ### Post a new customer
 POST {{CustomerFlow}}/customer
@@ -7,8 +10,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "FirstName": "João",
-    "LastName": "Silva",
+    "FirstName": "Keveen",
+    "LastName": "Menezes",
     "Email": "joao.silva@email.com",
     "Password": "Senha123",
     "PhoneNumber": "(123)4567890",

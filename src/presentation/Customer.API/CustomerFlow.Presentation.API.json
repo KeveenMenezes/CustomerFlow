@@ -73,6 +73,29 @@
             }
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Get all customers with their basic personal information, address, and contact.",
+        "description": "This endpoint retrieves all customers by returning their personal, address, and contact information.",
+        "operationId": "GetAllCustomer",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

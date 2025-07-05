@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="Dtos/" />
     <Folder Include="Features/Customers/EventHandlers/Integration/" />
-    <Folder Include="Features/Customers/Queries/" />
   </ItemGroup>
 
   <ItemGroup>

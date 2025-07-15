@@ -102,6 +102,13 @@ public static partial class Extensions
         // See https://aka.ms/dotnet/aspire/healthchecks for details before enabling these endpoints in non-development environments.
         if (app.Environment.IsDevelopment())
         {
+
+            app.MapGet("/", context =>
+            {
+                context.Response.Redirect("/swagger/index.html");
+                return Task.CompletedTask;
+            });
+
             // All health checks must pass for app to be considered ready to accept traffic after starting
             app.UseHealthChecks("/health");
 

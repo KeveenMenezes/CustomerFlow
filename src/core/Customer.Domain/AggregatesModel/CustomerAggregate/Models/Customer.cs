@@ -3,7 +3,6 @@ namespace CustomerFlow.Core.Domain.AggregatesModel.CustomerAggregate.Models;
 public class Customer
     : Aggregate<CustomerId>
 {
-
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public Email Email { get; private set; }

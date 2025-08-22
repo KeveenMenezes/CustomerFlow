@@ -25,6 +25,7 @@ O **CustomerFlow** é um serviço de gestão de clientes projetado para ser alta
 **Equipes com conhecimento em DDD**: Esta aplicação deve ser desenvolvida por equipes com conhecimento adequado em Domain-Driven Design, capazes de separar bem os contextos e utilizar entidades ricas.
 **Pré-estudo da arquitetura**: É fundamental realizar um pré-estudo da arquitetura proposta, pois isso trará benefícios significativos ao desenvolvimento e à manutenção do sistema.
 **Experiência com Entity Framework e eventos**: O time deve possuir experiência com Entity Framework e arquitetura baseada em eventos, garantindo o uso correto dos padrões e evitando problemas comuns de tracking e publicação de eventos.
+**Classes de atenção**: É importante que a equipe compreenda profundamente o funcionamento das classes `UnitOfWorkBehavior` e `DispatchDomainEventsInterceptor`, pois elas são responsáveis pelo controle transacional, publicação de eventos e podem impactar diretamente a consistência e rastreabilidade do sistema.
 
 ## Tecnologias e padrões utilizados
 
